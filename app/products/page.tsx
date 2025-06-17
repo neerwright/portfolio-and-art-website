@@ -1,4 +1,17 @@
-function ProductsPage() {
-  return <h1 className="text-3xl">ProductsPage</h1>;
+import ProductsContainer from "@/components/products/ProductsContainer";
+
+async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ layout?: string; search?: string }>;
+}) {
+  const { search, layout } = await searchParams;
+  const l = layout || "grid";
+  const s = search || "";
+  return (
+    <>
+      <ProductsContainer layout={l} search={search} />
+    </>
+  );
 }
 export default ProductsPage;
