@@ -10,7 +10,7 @@ async function ProductsPage({
   const s = search || "";
   return (
     <>
-      <ProductsContainer layout={l} search={search} />
+      <ProductsContainer layout={l} search={s} />
     </>
   );
 }

@@ -68,7 +68,7 @@ async function ItemsPage() {
 export default ItemsPage;
 
 function DeleteProduct({ productId }: { productId: string }) {
-  const prevState = { productId: productId };
+  //const prevState = { productId: productId };
   const deleteProduct = deleteProductAction.bind(null, { productId });
   return (
     <FormContainer action={deleteProduct}>
