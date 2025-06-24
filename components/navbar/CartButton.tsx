@@ -11,12 +11,12 @@ async function CartButton() {
   const numItemsInCart = await fetchCartItems();
 
   return (
-    <div className="flex justify-center items-center relative ">
+    <div className="flex justify-start items-center relative ">
       <Link href="/cart">
-        <div className=" bg-stone-950 relative size-10">
-          <ShopBagIcon></ShopBagIcon>
+        <div className=" bg-stone-950 relative ">
+          <ShopBagIcon color={"rgb(108,188,228)"}></ShopBagIcon>
 
-          <span className="absolute top-1 -right-0.4 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
+          <span className="absolute top-1 right-0.5 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
             {numItemsInCart}
           </span>
         </div>

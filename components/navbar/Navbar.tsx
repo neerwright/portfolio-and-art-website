@@ -1,16 +1,14 @@
 import Container from "../global/Container";
 import CartButton from "./CartButton";
-import NavbarSearch from "./NavbarSearch";
 import Logo from "./Logo";
-import DarkMode from "./DarkMode";
-import LinksDropdown from "./LinksDropdown";
-import { Suspense } from "react";
+import NavbarScrollContainer from "./NavbarScrollContainer";
 import NavLinks from "./NavLinks";
+import { useState, useEffect } from "react";
 
 function Navbar() {
   return (
-    <nav className="border-b bg-stone-950">
-      <Container className="flex flex-col sm:flex-row sm:justify-between sm:items-center flex-wrap py-8">
+    <NavbarScrollContainer>
+      <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:items-center py-8">
         <div className="navbar-start flex content-start">
           <Logo />
         </div>
@@ -20,11 +18,10 @@ function Navbar() {
             <NavLinks />
           </ul>
         </div>
-
         <div className="navbar-end"></div>
         <CartButton></CartButton>
-      </Container>
-    </nav>
+      </div>
+    </NavbarScrollContainer>
   );
 }
 export default Navbar;
