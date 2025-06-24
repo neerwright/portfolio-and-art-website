@@ -1,12 +1,10 @@
 "use client";
 
 import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
 function NavbarScrollContainer({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;

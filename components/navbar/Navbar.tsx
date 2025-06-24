@@ -1,14 +1,13 @@
-import Container from "../global/Container";
 import CartButton from "./CartButton";
+import LinksDropdown from "./LinksDropdown";
 import Logo from "./Logo";
 import NavbarScrollContainer from "./NavbarScrollContainer";
 import NavLinks from "./NavLinks";
-import { useState, useEffect } from "react";
 
 function Navbar() {
   return (
     <NavbarScrollContainer>
-      <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:items-center py-8">
+      <div className=" flex flex-row justify-evenly items-center py-8">
         <div className="navbar-start flex content-start">
           <Logo />
         </div>
@@ -18,8 +17,13 @@ function Navbar() {
             <NavLinks />
           </ul>
         </div>
-        <div className="navbar-end"></div>
-        <CartButton></CartButton>
+
+        <div className="navbar-end hidden md:flex ">
+          <CartButton></CartButton>
+        </div>
+        <div className="navbar-end flex md:hidden content-end items-center">
+          <LinksDropdown></LinksDropdown>
+        </div>
       </div>
     </NavbarScrollContainer>
   );
