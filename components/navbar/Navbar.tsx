@@ -3,6 +3,8 @@ import LinksDropdown from "./LinksDropdown";
 import Logo from "./Logo";
 import NavbarScrollContainer from "./NavbarScrollContainer";
 import NavLinks from "./NavLinks";
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import SignOutLinks from "./SignOutLinks";
 
 function Navbar() {
   return (
@@ -15,6 +17,11 @@ function Navbar() {
         <div className="navbar-center hidden md:flex">
           <ul className="flex justify-center gap-4">
             <NavLinks />
+            <li>
+              <SignedIn>
+                <SignOutLinks textColor={"text-sky-50"} />
+              </SignedIn>
+            </li>
           </ul>
         </div>
 

@@ -8,7 +8,7 @@ import {
 import { LuAlignLeft } from "react-icons/lu";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { links } from "@/utils/links";
+import { signedOutLinks, signedInLinks, NavLink } from "@/utils/links";
 import UserIcon from "./UserIcon";
 import SignOutLinks from "./SignOutLinks";
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
@@ -17,7 +17,8 @@ import { auth } from "@clerk/nextjs/server";
 async function LinksDropdown() {
   const { userId } = await auth();
   const isAdmin = userId === process.env.ADMIN_USER_ID;
-
+  const allLinks: NavLink[] = signedOutLinks.concat(signedInLinks);
+  console.log(allLinks);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,8 +41,9 @@ async function LinksDropdown() {
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
+
         <SignedIn>
-          {links.map((link) => {
+          {allLinks.map((link) => {
             if (link.label === "dashboard" && !isAdmin) return null;
             return (
               <DropdownMenuItem key={link.href}>
@@ -53,7 +55,7 @@ async function LinksDropdown() {
           })}
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <SignOutLinks />
+            <SignOutLinks textColor="black" />
           </DropdownMenuItem>
         </SignedIn>
       </DropdownMenuContent>

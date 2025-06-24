@@ -1,17 +1,18 @@
-type NavLink = {
+export type NavLink = {
   href: string;
   label: string;
 };
 
-export const links: NavLink[] = [
+export const signedOutLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects/Portfolio" },
   { href: "/contact", label: "Contact" },
   { href: "/art", label: "Art-Shop" },
+];
 
+export const signedInLinks: NavLink[] = [
   { href: "/orders", label: "orders" },
-  { href: "/reviews", label: "reviews" },
   { href: "/admin/sales", label: "dashboard" },
 ];
 

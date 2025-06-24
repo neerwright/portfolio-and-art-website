@@ -1,10 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 import { fetchCartItems } from "@/utils/actions";
 
-import { GrShop } from "react-icons/gr";
-import bagSVG from "../../public/images/ShoppingBag.svg";
 import ShopBagIcon from "@/components/icons/ShopBagIcon";
 
 async function CartButton() {
