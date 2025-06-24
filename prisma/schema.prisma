@@ -91,3 +91,16 @@ model Order {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Project {
+  id           String     @id @default(uuid()) @map("_id")
+  title        String
+  tech     String
+  highlights String
+  video       String
+  description       String
+  goals       String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+}

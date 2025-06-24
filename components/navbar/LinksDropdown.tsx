@@ -18,23 +18,37 @@ async function LinksDropdown() {
   const { userId } = await auth();
   const isAdmin = userId === process.env.ADMIN_USER_ID;
   const allLinks: NavLink[] = signedOutLinks.concat(signedInLinks);
-  console.log(allLinks);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex gap-4 max-w-[100px]">
+        <Button
+          variant="outline"
+          className="flex gap-4 max-w-[100px] bg-blue-400 hover:bg-blue-500 border-black"
+        >
           <LuAlignLeft className="w-6 h-6" />
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="start" sideOffset={10}>
         <SignedOut>
+          {signedOutLinks.map((link) => {
+            if (link.label === "dashboard" && !isAdmin) return null;
+            return (
+              <DropdownMenuItem key={link.href}>
+                <Link href={link.href} className="capitalize w-full">
+                  {link.label}
+                </Link>
+              </DropdownMenuItem>
+            );
+          })}
+          <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignInButton mode="modal">
               <button className="w-full text-left">Login</button>
             </SignInButton>
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
+
           <DropdownMenuItem>
             <SignUpButton mode="modal">
               <button className="w-full text-left">Register</button>

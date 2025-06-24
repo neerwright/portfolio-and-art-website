@@ -5,12 +5,12 @@ import { Suspense } from "react";
 
 function HomePage() {
   return (
-    <>
+    <div className="p-8">
       <Hero />
       <Suspense fallback={<LoadingContainer />}>
         <FeaturedProducts />
       </Suspense>
-    </>
+    </div>
   );
 }
 export default HomePage;

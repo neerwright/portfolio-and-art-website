@@ -19,7 +19,7 @@ async function NavLinks() {
         if (link.label === "dashboard" && !isAdmin) return null;
         return (
           <li key={link.href}>
-            <Link href={link.href} className="text-sky-50 hover:text-sky-500">
+            <Link href={link.href} className="text-sky-50 hover:text-blue-300">
               {link.label}
             </Link>
           </li>

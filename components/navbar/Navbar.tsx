@@ -9,7 +9,7 @@ import SignOutLinks from "./SignOutLinks";
 function Navbar() {
   return (
     <NavbarScrollContainer>
-      <div className=" flex flex-row justify-evenly items-center py-8">
+      <div className=" flex flex-row justify-evenly items-center py-8 shadow-xl">
         <div className="navbar-start flex content-start">
           <Logo />
         </div>

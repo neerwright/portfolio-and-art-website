@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 function NavbarScrollContainer({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(true);
+  const SCROLL_DIST = 200;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -12,12 +13,10 @@ function NavbarScrollContainer({ children }: { children: ReactNode }) {
     const controlNavbar = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollY && currentScrollY > SCROLL_DIST) {
         setIsVisible(false);
-        console.log("scroll vis = false");
       } else {
         setIsVisible(true);
-        console.log("scroll vis = true");
       }
       lastScrollY = currentScrollY;
     };
