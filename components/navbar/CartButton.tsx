@@ -3,23 +3,25 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
 import { fetchCartItems } from "@/utils/actions";
 
+import { GrShop } from "react-icons/gr";
+import bagSVG from "../../public/images/ShoppingBag.svg";
+import ShopBagIcon from "@/components/icons/ShopBagIcon";
+
 async function CartButton() {
   const numItemsInCart = await fetchCartItems();
 
   return (
-    <Button
-      asChild
-      variant="outline"
-      size="icon"
-      className="flex justify-center items-center relative"
-    >
+    <div className="flex justify-center items-center relative ">
       <Link href="/cart">
-        <LuShoppingCart />
-        <span className="absolute -top-3 -right-3 bg-primary text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
-          {numItemsInCart}
-        </span>
+        <div className=" bg-stone-950 relative size-10">
+          <ShopBagIcon></ShopBagIcon>
+
+          <span className="absolute top-1 -right-0.4 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
+            {numItemsInCart}
+          </span>
+        </div>
       </Link>
-    </Button>
+    </div>
   );
 }
 export default CartButton;
