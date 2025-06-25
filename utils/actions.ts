@@ -624,3 +624,18 @@ export const fetchAdminOrders = async () => {
   });
   return orders;
 };
+
+
+export const fetchAllProject = async ({ search = "" }: { search: string }) => {
+  return db.product.findMany({
+    where: {
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { company: { contains: search, mode: "insensitive" } },
+      ],
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+};
