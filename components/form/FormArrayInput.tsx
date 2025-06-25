@@ -3,6 +3,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { FormInputAddButton, FormInputDeleteButton } from "./Buttons";
 import { useState } from "react";
+import { Textarea } from "../ui/textarea";
 
 type FormInputProps = {
   name: string;
@@ -28,22 +29,28 @@ function FormArrayInput({ label, name, type, accept }: FormInputProps) {
   };
 
   return (
-    <div>
+    <div className="">
       {inputFieldsList.map((field, index) => (
         <div className="mb-2" key={index}>
           <Label htmlFor={name} className="capitalize">
             {`${label}${field}`}
           </Label>
 
-          <div className="flex flex-row">
-            <Input
-              id={`${name}${field}`}
-              name={`${name}${field}`}
-              type={type}
-              required
-              accept={accept}
-            />
-
+          <div className="flex flex-row py-2">
+            <div className="flex flex-col ">
+              <Input
+                id={`${name}-title-${field}`}
+                name={`${name}-title-${field}`}
+                type={type}
+                required
+                accept={accept}
+              />
+              {type === "text" ? (
+                <TextField name={`${name}-text-${field}`} />
+              ) : (
+                ""
+              )}
+            </div>
             <FormInputDeleteButton
               onClickEvent={handleDelInputField}
               id={Number(field)}
@@ -58,3 +65,7 @@ function FormArrayInput({ label, name, type, accept }: FormInputProps) {
 }
 
 export default FormArrayInput;
+
+function TextField({ name }: { name: string }) {
+  return <Textarea id={name} name={name} rows={5} required />;
+}

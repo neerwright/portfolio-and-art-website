@@ -642,3 +642,31 @@ export const fetchAllProject = async ({ search = "" }: { search: string }) => {
 export const doNothing = async () => {
   return { message: "hello" };
 };
+
+export const createProjectAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const user = await getAuthUser();
+
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(productSchema, rawData);
+    const file = formData.get("image") as File;
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file });
+
+    const fullPath = await uploadImage(validatedFile.image);
+
+    await db.product.create({
+      data: {
+        ...validatedFields,
+        image: fullPath,
+        clerkId: user.id,
+      },
+    });
+  } catch (error) {
+    return renderError(error);
+  }
+  redirect("/admin/products");
+};

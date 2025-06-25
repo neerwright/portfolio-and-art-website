@@ -1,7 +1,7 @@
 import FormInput from "@/components/form/FormInput";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
-import { createProductAction } from "@/utils/actions";
+import { createProductAction, doNothing } from "@/utils/actions";
 import ImageInput from "@/components/form/ImageInput";
 import PriceInput from "@/components/form/PriceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
@@ -14,42 +14,33 @@ function CreateProject() {
   const tech = "React,Next.js";
   const texthighlights = "";
   return (
-    <section>
+    <section className="p-9">
       <h1 className="text-2xl font-semibold mb-8 capitalize">create project</h1>
       <div className="border p-8 rounded-md">
-        <FormContainer action={createProjectAction}>
+        <FormContainer action={doNothing}>
           <div className="grid gap-4 md:grid-cols-1 my-4">
-            <FormInput
-              type="text"
-              name="title"
-              label="project title"
-              defaultValue={title}
-            />
-            <FormInput
-              type="text"
-              name="tech"
-              label="technologies used"
-              defaultValue={tech}
-            />
+            <FormInput type="text" name="title" label="project title" />
+            <FormInput type="text" name="tech" label="technologies used" />
+            <FormInput type="text" name="github" label="github link" />
+            <FormInput type="text" name="video" label="youtube video link" />
+
             <FormArrayInput
               type="text"
               name="texthighlights"
               label="Highlights"
             />
 
-            <ImageArrayInput></ImageArrayInput>
-            <ImageInput />
+            <FormArrayInput
+              label="image highlights"
+              name="imagehighlights"
+              type="file"
+              accept="image/*"
+            ></FormArrayInput>
           </div>
-          <TextAreaInput
-            name="texthighlights"
-            labelText="product description"
-            defaultValue={description}
-          />
-          <div className="mt-6">
-            <CheckboxInput name="featured" label="featured" />
-          </div>
+          <TextAreaInput name="description" labelText="project description" />
+          <TextAreaInput name="goals" labelText="goals" />
 
-          <SubmitButton text="Create Product" className="mt-8" />
+          <SubmitButton text="Create Project" className="mt-8" />
         </FormContainer>
       </div>
     </section>
