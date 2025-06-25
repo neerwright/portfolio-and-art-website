@@ -25,6 +25,39 @@ export const productSchema = z.object({
   ),
 });
 
+export const projectSchema = z.object({
+  title: z
+    .string()
+    .min(2, {
+      message: "name must be at least 2 characters.",
+    })
+    .max(100, {
+      message: "name must be less than 100 characters.",
+    }),
+  tech: z.array(z.string()),
+  rank: z.coerce.number().int().min(0, {
+    message: "rank must be a positive number.",
+  }),
+  projectText: z.array(
+    z.object({
+      inputIndex: z.number(),
+      title: z.string(),
+      data: z.string(),
+    })
+  ),
+  projectImages: z.array(
+    z.object({
+      inputIndex: z.number(),
+      title: z.string(),
+      data: z.string(),
+    })
+  ),
+  video: z.string(),
+  description: z.string(),
+  goals: z.string(),
+  github: z.string(),
+});
+
 export function validateWithZodSchema<T>(
   schema: ZodSchema<T>,
   data: unknown

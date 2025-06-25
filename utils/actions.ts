@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import {
   productSchema,
+  projectSchema,
   validateWithZodSchema,
   imageSchema,
   reviewSchema,
@@ -639,10 +640,26 @@ export const fetchAllProject = async ({ search = "" }: { search: string }) => {
   });
 };
 
-export const doNothing = async () => {
-  return { message: "hello" };
+export const doNothing = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  console.log("server hallo");
+  console.log(formData.get("projectText"));
+  return { message: "done" };
 };
 
+type ProjectData = {
+  title: any;
+  tech: any;
+  github: any;
+  video: any;
+  projectText: any;
+  projectImages: any;
+  description: any;
+  goals: any;
+  rank: any;
+};
 export const createProjectAction = async (
   prevState: any,
   formData: FormData
@@ -650,8 +667,20 @@ export const createProjectAction = async (
   const user = await getAuthUser();
 
   try {
-    const rawData = Object.fromEntries(formData);
-    const validatedFields = validateWithZodSchema(productSchema, rawData);
+    const rawData = Object.fromEntries(formData) as ProjectData;
+    const parsedRawData = rawData;
+    parsedRawData["projectText"] = JSON.parse(parsedRawData["projectText"]);
+    parsedRawData["projectImages"] = JSON.parse(parsedRawData["projectImages"]);
+
+    parsedRawData["tech"] = [parsedRawData["tech"]];
+    parsedRawData["rank"] = Number();
+
+    console.log("parsedRawData");
+    console.log(parsedRawData);
+    const validatedFields = validateWithZodSchema(projectSchema, parsedRawData);
+    console.log("validatedFields");
+    console.log(validatedFields);
+    /*
     const file = formData.get("image") as File;
 
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
@@ -665,6 +694,7 @@ export const createProjectAction = async (
         clerkId: user.id,
       },
     });
+    */
   } catch (error) {
     return renderError(error);
   }

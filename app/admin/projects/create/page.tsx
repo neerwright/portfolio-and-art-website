@@ -1,12 +1,10 @@
 import FormInput from "@/components/form/FormInput";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
-import { createProductAction, doNothing } from "@/utils/actions";
-import ImageInput from "@/components/form/ImageInput";
-import PriceInput from "@/components/form/PriceInput";
+import { createProjectAction, doNothing } from "@/utils/actions";
+
 import TextAreaInput from "@/components/form/TextAreaInput";
-import { faker } from "@faker-js/faker";
-import CheckboxInput from "@/components/form/CheckBoxInput";
+
 import FormArrayInput from "@/components/form/FormArrayInput";
 
 function CreateProject() {
@@ -17,7 +15,7 @@ function CreateProject() {
     <section className="p-9">
       <h1 className="text-2xl font-semibold mb-8 capitalize">create project</h1>
       <div className="border p-8 rounded-md">
-        <FormContainer action={doNothing}>
+        <FormContainer action={createProjectAction}>
           <div className="grid gap-4 md:grid-cols-1 my-4">
             <FormInput type="text" name="title" label="project title" />
             <FormInput type="text" name="tech" label="technologies used" />
@@ -28,6 +26,7 @@ function CreateProject() {
               type="text"
               name="texthighlights"
               label="Highlights"
+              arrayName="projectText"
             />
 
             <FormArrayInput
@@ -35,12 +34,14 @@ function CreateProject() {
               name="imagehighlights"
               type="file"
               accept="image/*"
+              arrayName="projectImages"
             ></FormArrayInput>
           </div>
           <TextAreaInput name="description" labelText="project description" />
           <TextAreaInput name="goals" labelText="goals" />
 
           <SubmitButton text="Create Project" className="mt-8" />
+          <FormInput type="number" name="rank" label="Rank" />
         </FormContainer>
       </div>
     </section>

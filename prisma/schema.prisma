@@ -91,6 +91,7 @@ model Order {
 model Project {
   id           String     @id @default(uuid()) @map("_id")
   title        String
+  rank         Int  @default(0)
   tech         String[]
   texthighlights   String[]
   imagehighlights String[]
