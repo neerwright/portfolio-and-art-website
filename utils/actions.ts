@@ -10,7 +10,7 @@ import {
   imageSchema,
   reviewSchema,
 } from "./schemas";
-import { uploadImage } from "@/utils/supabase";
+import { uploadImage, uploadImages } from "@/utils/supabase";
 import { revalidatePath } from "next/cache";
 import { deleteImage } from "@/utils/supabase";
 import { Cart } from "@prisma/client";
@@ -649,13 +649,13 @@ export const doNothing = async (
   return { message: "done" };
 };
 
-type ProjectData = {
+type UnparsedProjectData = {
   title: any;
   tech: any;
   github: any;
   video: any;
-  projectText: any;
-  projectImages: any;
+  texthighlights: any;
+  imagehighlights: any;
   description: any;
   goals: any;
   rank: any;
@@ -667,36 +667,78 @@ export const createProjectAction = async (
   const user = await getAuthUser();
 
   try {
-    const rawData = Object.fromEntries(formData) as ProjectData;
-    const parsedRawData = rawData;
-    parsedRawData["projectText"] = JSON.parse(parsedRawData["projectText"]);
-    parsedRawData["projectImages"] = JSON.parse(parsedRawData["projectImages"]);
+    const rawData = Object.fromEntries(formData) as UnparsedProjectData;
 
-    parsedRawData["tech"] = [parsedRawData["tech"]];
-    parsedRawData["rank"] = Number();
+    rawData["texthighlights"] = JSON.parse(rawData["texthighlights"]);
+    rawData["texthighlights"] = rawData["texthighlights"].map((item: any) => {
+      return JSON.stringify({ title: item.title, data: item.data });
+    });
 
-    console.log("parsedRawData");
-    console.log(parsedRawData);
-    const validatedFields = validateWithZodSchema(projectSchema, parsedRawData);
+    rawData["imagehighlights"] = JSON.parse(rawData["imagehighlights"]);
+    console.log(rawData);
+
+    const images = rawData["imagehighlights"].map((item: any) => {
+      console.log("title");
+      console.log(item.title);
+      const file = formData.get(item.title) as File;
+      console.log("file");
+      console.log(file);
+      return file;
+    });
+
+    const validatedImages: File[] = images.map((item: any) => {
+      console.log("images");
+      console.log(images);
+      const validatedFile = validateWithZodSchema(imageSchema, {
+        image: item,
+      });
+
+      return validatedFile.image;
+    });
+    console.log("images");
+    console.log(validatedImages);
+    rawData["tech"] = [rawData["tech"]];
+    rawData["rank"] = Number();
+
+    const validatedFields = validateWithZodSchema(projectSchema, rawData);
     console.log("validatedFields");
     console.log(validatedFields);
-    /*
-    const file = formData.get("image") as File;
 
-    const validatedFile = validateWithZodSchema(imageSchema, { image: file });
-
-    const fullPath = await uploadImage(validatedFile.image);
-
-    await db.product.create({
-      data: {
-        ...validatedFields,
-        image: fullPath,
-        clerkId: user.id,
-      },
+    const fullPaths = await uploadImages(validatedImages);
+    Promise.all([...fullPaths]).then((values) => {
+      console.log("values");
+      console.log(values);
+      db_create_project({
+        validatedFields: validatedFields,
+        fullPaths: values,
+      });
     });
+    console.log("fullPaths");
+    console.log(fullPaths);
+    /*
+    
     */
   } catch (error) {
     return renderError(error);
   }
   redirect("/admin/products");
+};
+
+const db_create_project = async ({
+  validatedFields,
+  fullPaths,
+}: {
+  validatedFields: any;
+  fullPaths: any;
+}) => {
+  console.log("-----------DB----------------");
+  console.log(validatedFields);
+  console.log(fullPaths);
+  console.log("-----------DB----------------");
+  await db.project.create({
+    data: {
+      ...validatedFields,
+      imagehighlights: fullPaths,
+    },
+  });
 };

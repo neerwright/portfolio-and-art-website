@@ -9,7 +9,7 @@ export const supabase = createClient(
 
 export const uploadImage = async (image: File) => {
   const timestamp = Date.now();
-  // const newName = `/users/${timestamp}-${image.name}`;
+
   const newName = `${timestamp}-${image.name}`;
 
   const { data, error } = await supabase.storage
@@ -25,4 +25,27 @@ export const deleteImage = (url: string) => {
   const imageName = url.split("/").pop();
   if (!imageName) throw new Error("Invalid URL");
   return supabase.storage.from(bucket).remove([imageName]);
+};
+
+export const uploadImages = async (images: File[]) => {
+  const paths = images.map((image) => {
+    console.log("------------------------------");
+    console.log("image");
+    console.log(image);
+    console.log("------------------------------");
+    return uploadImage(image);
+  });
+
+  console.log("------------------------------");
+  console.log("paths");
+  console.log(paths);
+  console.log("------------------------------");
+  return paths;
+  /*
+  Promise.all([...paths]).then((values) => {
+    console.log("values");
+    console.log(values);
+    return values;
+  });
+  */
 };

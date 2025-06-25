@@ -26,7 +26,7 @@ function CreateProject() {
               type="text"
               name="texthighlights"
               label="Highlights"
-              arrayName="projectText"
+              arrayName="texthighlights"
             />
 
             <FormArrayInput
@@ -34,7 +34,7 @@ function CreateProject() {
               name="imagehighlights"
               type="file"
               accept="image/*"
-              arrayName="projectImages"
+              arrayName="imagehighlights"
             ></FormArrayInput>
           </div>
           <TextAreaInput name="description" labelText="project description" />

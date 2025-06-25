@@ -38,20 +38,7 @@ export const projectSchema = z.object({
   rank: z.coerce.number().int().min(0, {
     message: "rank must be a positive number.",
   }),
-  projectText: z.array(
-    z.object({
-      inputIndex: z.number(),
-      title: z.string(),
-      data: z.string(),
-    })
-  ),
-  projectImages: z.array(
-    z.object({
-      inputIndex: z.number(),
-      title: z.string(),
-      data: z.string(),
-    })
-  ),
+  texthighlights: z.array(z.string()),
   video: z.string(),
   description: z.string(),
   goals: z.string(),
@@ -62,7 +49,11 @@ export function validateWithZodSchema<T>(
   schema: ZodSchema<T>,
   data: unknown
 ): T {
+  console.log("data");
+  console.log(data);
   const result = schema.safeParse(data);
+  console.log("result");
+  console.log(result);
   if (!result.success) {
     const errors = result.error.errors.map((error) => error.message);
     throw new Error(errors.join(", "));

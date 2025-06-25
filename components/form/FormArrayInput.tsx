@@ -16,6 +16,7 @@ type InputList = {
   inputIndex: number;
   title: string;
   data: string;
+  imgFile?: any;
 };
 function FormArrayInput({
   label,
@@ -50,6 +51,10 @@ function FormArrayInput({
     const element = list.find((el) => el.inputIndex === id);
     if (element == null) return;
     element["title"] = value;
+
+    if (type != "text") {
+      element["title"] = `${name}-title-${element.inputIndex}`;
+    }
     setInputFieldsList(list);
   };
 
