@@ -10,33 +10,31 @@ import CheckboxInput from "@/components/form/CheckBoxInput";
 
 function CreateProject() {
   const title = "my project";
-  const company = faker.company.name();
-  // const description = faker.commerce.productDescription();
-  const description = faker.lorem.paragraph({ min: 10, max: 12 });
-
+  const tech = "React,Next.js";
+  const texthighlights = "";
   return (
     <section>
-      <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
+      <h1 className="text-2xl font-semibold mb-8 capitalize">create project</h1>
       <div className="border p-8 rounded-md">
-        <FormContainer action={createProductAction}>
-          <div className="grid gap-4 md:grid-cols-2 my-4">
+        <FormContainer action={createProjectAction}>
+          <div className="grid gap-4 md:grid-cols-1 my-4">
             <FormInput
               type="text"
-              name="name"
-              label="product name"
-              defaultValue={name}
+              name="title"
+              label="project title"
+              defaultValue={title}
             />
             <FormInput
               type="text"
-              name="company"
-              label="company"
-              defaultValue={company}
+              name="tech"
+              label="technologies used"
+              defaultValue={tech}
             />
             <PriceInput />
             <ImageInput />
           </div>
           <TextAreaInput
-            name="description"
+            name="texthighlights"
             labelText="product description"
             defaultValue={description}
           />

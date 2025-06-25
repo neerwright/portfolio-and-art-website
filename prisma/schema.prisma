@@ -92,7 +92,7 @@ model Project {
   id           String     @id @default(uuid()) @map("_id")
   title        String
   tech         String[]
-  texthighlight   String[]
+  texthighlights   String[]
   imagehighlights String[]
   video        String
   description  String

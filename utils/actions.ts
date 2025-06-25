@@ -625,7 +625,6 @@ export const fetchAdminOrders = async () => {
   return orders;
 };
 
-
 export const fetchAllProject = async ({ search = "" }: { search: string }) => {
   return db.product.findMany({
     where: {
@@ -638,4 +637,8 @@ export const fetchAllProject = async ({ search = "" }: { search: string }) => {
       createdAt: "desc",
     },
   });
+};
+
+export const doNothing = async () => {
+  return { message: "hello" };
 };

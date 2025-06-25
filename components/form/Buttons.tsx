@@ -8,6 +8,8 @@ import { SignInButton } from "@clerk/nextjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { FaPenSquare } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
+import { IoIosAddCircle } from "react-icons/io";
+import { IoMdRemoveCircle } from "react-icons/io";
 
 type btnSize = "default" | "lg" | "sm";
 
@@ -84,6 +86,46 @@ export const CardSignInButton = () => {
         <FaRegHeart />
       </Button>
     </SignInButton>
+  );
+};
+
+export const FormInputAddButton = ({
+  onClickEvent,
+}: {
+  onClickEvent: React.MouseEventHandler<HTMLButtonElement>;
+}) => {
+  return (
+    <Button
+      type="button"
+      onClick={onClickEvent}
+      size="icon"
+      variant="outline"
+      className="p-2 cursor-pointer"
+      asChild
+    >
+      <IoIosAddCircle />
+    </Button>
+  );
+};
+
+export const FormInputDeleteButton = ({
+  onClickEvent,
+  id,
+}: {
+  onClickEvent: any;
+  id: number;
+}) => {
+  return (
+    <Button
+      type="button"
+      onClick={() => onClickEvent(id)}
+      size="icon"
+      variant="outline"
+      className="p-2 cursor-pointer"
+      asChild
+    >
+      <IoMdRemoveCircle />
+    </Button>
   );
 };
 
