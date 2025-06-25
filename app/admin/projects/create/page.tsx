@@ -7,6 +7,7 @@ import PriceInput from "@/components/form/PriceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { faker } from "@faker-js/faker";
 import CheckboxInput from "@/components/form/CheckBoxInput";
+import FormArrayInput from "@/components/form/FormArrayInput";
 
 function CreateProject() {
   const title = "my project";
@@ -30,7 +31,13 @@ function CreateProject() {
               label="technologies used"
               defaultValue={tech}
             />
-            <PriceInput />
+            <FormArrayInput
+              type="text"
+              name="texthighlights"
+              label="Highlights"
+            />
+
+            <ImageArrayInput></ImageArrayInput>
             <ImageInput />
           </div>
           <TextAreaInput

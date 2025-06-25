@@ -7,18 +7,11 @@ import { useState } from "react";
 type FormInputProps = {
   name: string;
   type: string;
-  label?: string;
-  defaultValue?: string;
-  placeholder?: string;
+  label: string;
+  accept?: string;
 };
 
-function FormArrayInput({
-  label,
-  name,
-  type,
-  defaultValue,
-  placeholder,
-}: FormInputProps) {
+function FormArrayInput({ label, name, type, accept }: FormInputProps) {
   const [inputFieldsList, setInputFieldsList] = useState<number[]>([0]);
   const [fieldNumber, setFieldNumber] = useState<number>(1);
 
@@ -41,15 +34,16 @@ function FormArrayInput({
           <Label htmlFor={name} className="capitalize">
             {`${label}${field}`}
           </Label>
+
           <div className="flex flex-row">
             <Input
               id={`${name}${field}`}
               name={`${name}${field}`}
               type={type}
-              defaultValue={defaultValue}
-              placeholder={placeholder}
               required
+              accept={accept}
             />
+
             <FormInputDeleteButton
               onClickEvent={handleDelInputField}
               id={Number(field)}
