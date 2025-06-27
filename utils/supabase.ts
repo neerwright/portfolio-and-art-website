@@ -27,6 +27,16 @@ export const deleteImage = (url: string) => {
   return supabase.storage.from(bucket).remove([imageName]);
 };
 
+export const deleteImages = (urls: string[]) => {
+  console.log(urls);
+  /*
+  
+  const imageName = url.split("/").pop();
+  if (!imageName) throw new Error("Invalid URL");
+  return supabase.storage.from(bucket).remove([imageName]);
+  */
+};
+
 export const uploadImages = async (images: File[]) => {
   const paths = images.map((image) => {
     console.log("------------------------------");

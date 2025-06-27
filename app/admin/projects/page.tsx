@@ -1,5 +1,5 @@
 import EmptyList from "@/components/global/EmptyList";
-import { fetchAdminProducts } from "@/utils/actions";
+import { fetchAdminProjects, deleteProjectAction } from "@/utils/actions";
 import Link from "next/link";
 
 import { formatCurrency } from "@/utils/format";
@@ -21,22 +21,20 @@ async function ProjectItemsPage() {
   const items = await fetchAdminProjects();
   if (items.length === 0) return <EmptyList />;
   return (
-    <section>
+    <section className="p-10">
       <Table>
         <TableCaption className="capitalize">
           total products : {items.length}
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Product Name</TableHead>
-            <TableHead>Company</TableHead>
-            <TableHead>Price</TableHead>
+            <TableHead>Project Name</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {items.map((item) => {
-            const { id: projectId, name, company, price } = item;
+            const { id: projectId, title } = item;
             return (
               <TableRow key={projectId}>
                 <TableCell>
@@ -44,13 +42,11 @@ async function ProjectItemsPage() {
                     href={`/projects/${projectId}`}
                     className="underline text-muted-foreground tracking-wide capitalize"
                   >
-                    {name}
+                    {title}
                   </Link>
                 </TableCell>
-                <TableCell>{company}</TableCell>
-                <TableCell>{formatCurrency(price)}</TableCell>
                 <TableCell className="flex items-center gap-x-2">
-                  <Link href={`/admin/products/${projectId}/edit`}>
+                  <Link href={`/admin/projects/${projectId}/edit`}>
                     <IconButton actionType="edit"></IconButton>
                   </Link>
                   <DeleteProject projectId={projectId} />

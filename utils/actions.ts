@@ -12,7 +12,7 @@ import {
 } from "./schemas";
 import { uploadImage, uploadImages } from "@/utils/supabase";
 import { revalidatePath } from "next/cache";
-import { deleteImage } from "@/utils/supabase";
+import { deleteImage, deleteImages } from "@/utils/supabase";
 import { Cart } from "@prisma/client";
 
 export const fetchFeaturedProducts = async () => {
@@ -731,14 +731,83 @@ const db_create_project = async ({
   validatedFields: any;
   fullPaths: any;
 }) => {
-  console.log("-----------DB----------------");
-  console.log(validatedFields);
-  console.log(fullPaths);
-  console.log("-----------DB----------------");
   await db.project.create({
     data: {
       ...validatedFields,
       imagehighlights: fullPaths,
     },
   });
+};
+
+export const fetchAdminProjects = async () => {
+  await getAdminUser();
+  const projects = await db.project.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return projects;
+};
+
+export const fetchAdminProjectDetails = async (productId: string) => {
+  await getAdminUser();
+  const project = await db.project.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  if (!project) redirect("/admin/products");
+  return project;
+};
+
+export const updateProjectAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await getAdminUser();
+  const projectHighlights = formData.get("texthighlights") as string;
+  console.log(projectHighlights);
+  return { message: "test" };
+  /*
+  try {
+    const projectId = formData.get("id") as string;
+    const rawData = Object.fromEntries(formData);
+
+    const validatedFields = validateWithZodSchema(projectSchema, rawData);
+
+    await db.project.update({
+      where: {
+        id: projectId,
+      },
+      data: {
+        ...validatedFields,
+      },
+    });
+    revalidatePath(`/admin/projects`);
+    return { message: "Product updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+    */
+};
+
+export const deleteProjectAction = async (prevState: { projectId: string }) => {
+  const { projectId } = prevState;
+  await getAdminUser();
+
+  try {
+    /*
+    const project = await db.project.delete({
+      where: {
+        id: projectId,
+      },
+    });
+    */
+    const project = await fetchAdminProjectDetails(projectId);
+    await deleteImages(project.imagehighlights);
+    revalidatePath("/admin/products");
+    return { message: "product removed" };
+  } catch (error) {
+    return renderError(error);
+  }
 };

@@ -2,7 +2,7 @@
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { FormInputAddButton, FormInputDeleteButton } from "./Buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type FormInputProps = {
   name: string;
@@ -10,10 +10,11 @@ type FormInputProps = {
   label: string;
   accept?: string;
   arrayName: string;
+  defaultData?: string[];
 };
 
 type InputList = {
-  inputIndex: number;
+  inputIndex?: number;
   title: string;
   data: string;
   imgFile?: any;
@@ -24,12 +25,25 @@ function FormArrayInput({
   type,
   accept,
   arrayName,
+  defaultData,
 }: FormInputProps) {
   const [inputFieldsList, setInputFieldsList] = useState<InputList[]>([
     { inputIndex: 0, title: "", data: "" },
   ]);
 
   const [fieldNumber, setFieldNumber] = useState<number>(1);
+
+  useEffect(() => {
+    if (defaultData) {
+      const defaultValues: InputList[] = [];
+      defaultData.map((dataString, index) => {
+        const parsedData = JSON.parse(dataString) as InputList;
+        defaultValues.push({ ...parsedData, inputIndex: index });
+
+        setInputFieldsList(defaultValues);
+      });
+    }
+  }, []);
 
   const handleAddInputField = () => {
     setInputFieldsList([
@@ -46,6 +60,8 @@ function FormArrayInput({
   };
 
   const handleInputFieldChange = (e: any, id: number) => {
+    console.log(inputFieldsList);
+
     const { value } = e.target;
     const list = [...inputFieldsList];
     const element = list.find((el) => el.inputIndex === id);
@@ -75,8 +91,8 @@ function FormArrayInput({
         id={arrayName}
         value={JSON.stringify(inputFieldsList)}
       />
-      {inputFieldsList.map((element, index) => (
-        <div className="mb-2" key={index}>
+      {inputFieldsList.map((element) => (
+        <div className="mb-2" key={element.inputIndex}>
           <Label htmlFor={name} className="capitalize">
             {`${label}${element.inputIndex}`}
           </Label>
@@ -89,6 +105,7 @@ function FormArrayInput({
                 type={type}
                 required
                 accept={accept}
+                defaultValue={element.title}
                 onChange={(e) =>
                   handleInputFieldChange(e, Number(element.inputIndex))
                 }
@@ -97,6 +114,7 @@ function FormArrayInput({
                 <TextA
                   onChangeHandler={handleTextAreaChange}
                   id={Number(element.inputIndex)}
+                  defaultValue={element.data}
                 />
               ) : (
                 ""
@@ -117,11 +135,20 @@ function FormArrayInput({
 
 export default FormArrayInput;
 
-function TextA({ id, onChangeHandler }: { id: number; onChangeHandler: any }) {
+function TextA({
+  id,
+  onChangeHandler,
+  defaultValue,
+}: {
+  id: number;
+  onChangeHandler: any;
+  defaultValue: string;
+}) {
   return (
     <textarea
       onChange={(e) => onChangeHandler(e, Number(id))}
       data-slot="textarea"
+      defaultValue={defaultValue}
       className={
         "border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
       }

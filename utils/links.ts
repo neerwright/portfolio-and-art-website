@@ -19,6 +19,7 @@ export const signedInLinks: NavLink[] = [
 export const adminLinks: NavLink[] = [
   { href: "/admin/sales", label: "sales" },
   { href: "/admin/products", label: "my products" },
+  { href: "/admin/projects", label: "my projects" },
   { href: "/admin/products/create", label: "create product" },
   { href: "/admin/projects/create", label: "create project" },
 ];
