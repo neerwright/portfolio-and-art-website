@@ -29,7 +29,7 @@ function ProjectSearch() {
     <Input
       type="search"
       placeholder="search projects..."
-      className="max-w-xs bg-sky-100"
+      className="max-w-xs bg-sky-50"
       onChange={(e) => {
         setSearch(e.target.value);
         handleSearch(e.target.value);

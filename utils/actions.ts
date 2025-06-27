@@ -641,15 +641,6 @@ export const fetchAllProjects = async ({ search = "" }: { search: string }) => {
   });
 };
 
-export const doNothing = async (
-  prevState: any,
-  formData: FormData
-): Promise<{ message: string }> => {
-  console.log("server hallo");
-  console.log(formData.get("projectText"));
-  return { message: "done" };
-};
-
 type UnparsedProjectData = {
   title: any;
   tech: any;
@@ -935,4 +926,16 @@ export const updateProjectProfileImageAction = async (
   } catch (error) {
     return renderError(error);
   }
+};
+
+export const fetchSingleProject = async (projectId: string) => {
+  const project = await db.project.findUnique({
+    where: {
+      id: projectId,
+    },
+  });
+  if (!project) {
+    redirect("/products");
+  }
+  return project;
 };

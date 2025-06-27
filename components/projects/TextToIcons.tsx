@@ -32,7 +32,7 @@ function MatchIcons({ tech }: { tech: string }) {
     case "react":
       return <ReactIcon></ReactIcon>;
       break;
-    case "typestript":
+    case "typescript":
       return <TSIcon />;
       break;
     default:

@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 function HomePage() {
   return (
-    <div className="p-8">
+    <div className="p-8 bg-sky-50">
       <Hero />
       <Suspense fallback={<LoadingContainer />}>
         <FeaturedProducts />

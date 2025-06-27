@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import TextToIcons from "./TextToIcons";
-import TSIcon from "../icons/TSicon";
 
 function ProjectsGrid({ projects }: { projects: Project[] }) {
   return (
@@ -17,7 +16,7 @@ function ProjectsGrid({ projects }: { projects: Project[] }) {
         return (
           <article key={projectId} className="group relative">
             <Link href={`/projects/${projectId}`}>
-              <Card className="transform group-hover:shadow-xl transition-shadow duration-500 bg-sky-100 hover:bg-sky-200">
+              <Card className="transform group-hover:shadow-xl transition-shadow duration-500 bg-sky-50">
                 <CardContent className="">
                   <p className="text-3xl capitalize flex justify-center">
                     {title}

@@ -26,3 +26,14 @@ export type CartState = {
 export type CartItemWithProduct = Prisma.CartItemGetPayload<{
   include: { product: true };
 }>;
+
+export type ProjectProps = {
+  title: string;
+  tech: string;
+  texthighlights: string[];
+  imagehighlights: string[];
+  video: string;
+  description: string;
+  goals: string;
+  github: string;
+};
