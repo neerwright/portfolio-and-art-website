@@ -668,7 +668,10 @@ export const createProjectAction = async (
 
   try {
     const rawData = Object.fromEntries(formData) as UnparsedProjectData;
-
+    const profileImage = formData.get("profileImage") as File;
+    console.log("profileImage");
+    console.log(profileImage);
+    console.log("profileImage");
     rawData["texthighlights"] = JSON.parse(rawData["texthighlights"]);
     rawData["texthighlights"] = rawData["texthighlights"].map((item: any) => {
       return JSON.stringify({ title: item.title, data: item.data });
@@ -696,29 +699,39 @@ export const createProjectAction = async (
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
 
     const fullPaths = await uploadImages(validatedImages);
+
+    const validatedProfileImage = validateWithZodSchema(imageSchema, {
+      image: profileImage,
+    });
+    const profileImagePath = await uploadImage(validatedProfileImage.image);
+
     Promise.all([...fullPaths]).then((values) => {
       db_create_project({
         validatedFields: validatedFields,
         fullPaths: values,
+        profileImage: profileImagePath,
       });
     });
   } catch (error) {
     return renderError(error);
   }
-  redirect("/admin/products");
+  redirect("/admin/projects");
 };
 
 const db_create_project = async ({
   validatedFields,
   fullPaths,
+  profileImage,
 }: {
   validatedFields: any;
   fullPaths: any;
+  profileImage: string;
 }) => {
   await db.project.create({
     data: {
       ...validatedFields,
       imagehighlights: fullPaths,
+      profileImage: profileImage,
     },
   });
 };
@@ -895,4 +908,32 @@ const db_add_images_project = async ({
       imagehighlights: { push: newImages },
     },
   });
+};
+
+export const updateProjectProfileImageAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await getAuthUser();
+  try {
+    const image = formData.get("image") as File;
+    const projectId = formData.get("id") as string;
+    const oldImageUrl = formData.get("url") as string;
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedFile.image);
+    await deleteImage(oldImageUrl);
+    await db.project.update({
+      where: {
+        id: projectId,
+      },
+      data: {
+        profileImage: fullPath,
+      },
+    });
+    revalidatePath(`/admin/projects/${projectId}/edit`);
+    return { message: "Product Image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
 };

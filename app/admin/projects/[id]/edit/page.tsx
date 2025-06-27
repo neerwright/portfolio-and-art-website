@@ -2,16 +2,19 @@ import {
   fetchAdminProjectDetails,
   updateProjectAction,
   addAditionalProjectImageAction,
+  updateProjectProfileImageAction,
 } from "@/utils/actions";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
-import PriceInput from "@/components/form/PriceInput";
+
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { SubmitButton } from "@/components/form/Buttons";
-import CheckboxInput from "@/components/form/CheckBoxInput";
-import ImageInputContainer from "@/components/form/ImageInputContainer";
+
 import FormArrayInput from "@/components/form/FormArrayInput";
 import ImageArrayUpdateContainer from "@/components/form/ImageArrayUpdateContainer";
+import { Separator } from "@/components/ui/separator";
+import ImageInput from "@/components/form/ImageInput";
+import ImageInputContainer from "@/components/form/ImageInputContainer";
 
 async function EditProjectPage({
   params,
@@ -123,6 +126,20 @@ async function EditProjectPage({
           </FormContainer>
         </section>
       </div>
+
+      <Separator />
+      <section className="py-8">
+        <p className="py-2 text-2xl">Profile Image</p>
+        <ImageInputContainer
+          action={updateProjectProfileImageAction}
+          name="profileImage"
+          image={project.profileImage}
+          text="update image"
+        >
+          <input type="hidden" name="id" value={id} />
+          <input type="hidden" name="url" value={project.profileImage} />
+        </ImageInputContainer>
+      </section>
     </section>
   );
 }
