@@ -40,8 +40,8 @@ function CreateProject() {
           <TextAreaInput name="description" labelText="project description" />
           <TextAreaInput name="goals" labelText="goals" />
 
-          <SubmitButton text="Create Project" className="mt-8" />
           <FormInput type="number" name="rank" label="Rank" />
+          <SubmitButton text="Create Project" className="mt-8" />
         </FormContainer>
       </div>
     </section>

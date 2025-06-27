@@ -1,4 +1,8 @@
-import { fetchAdminProjectDetails, updateProjectAction } from "@/utils/actions";
+import {
+  fetchAdminProjectDetails,
+  updateProjectAction,
+  addAditionalProjectImageAction,
+} from "@/utils/actions";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
 import PriceInput from "@/components/form/PriceInput";
@@ -102,6 +106,21 @@ async function EditProjectPage({
             name="imagehighlights"
             id={id}
           />
+        </section>
+
+        <section className="py-8">
+          <p className="text-3xl py-2">Add new Images</p>
+          <FormContainer action={addAditionalProjectImageAction}>
+            <input type="hidden" name="id" value={id} />
+            <FormArrayInput
+              label="image highlights"
+              name="imagehighlights"
+              type="file"
+              accept="image/*"
+              arrayName="imagehighlights"
+            ></FormArrayInput>
+            <SubmitButton text="add images" className="mt-8" />
+          </FormContainer>
         </section>
       </div>
     </section>

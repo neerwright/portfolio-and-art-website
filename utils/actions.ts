@@ -838,3 +838,61 @@ export const replaceProjectImageAction = async (
     return renderError(error);
   }
 };
+
+export const addAditionalProjectImageAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await getAuthUser();
+  try {
+    const projectId = formData.get("id") as string;
+
+    const rawData = Object.fromEntries(formData) as UnparsedProjectData;
+
+    rawData["imagehighlights"] = JSON.parse(rawData["imagehighlights"]);
+
+    const images = rawData["imagehighlights"].map((item: any) => {
+      const file = formData.get(item.title) as File;
+
+      return file;
+    });
+
+    const validatedImages: File[] = images.map((item: any) => {
+      const validatedFile = validateWithZodSchema(imageSchema, {
+        image: item,
+      });
+
+      return validatedFile.image;
+    });
+
+    const fullPaths = await uploadImages(validatedImages);
+    Promise.all([...fullPaths]).then((values) => {
+      db_add_images_project({
+        newImages: values,
+        projectId: projectId,
+      });
+    });
+
+    revalidatePath(`/admin/projects/${projectId}/edit`);
+    return { message: "Product Image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
+const db_add_images_project = async ({
+  newImages,
+  projectId,
+}: {
+  newImages: string[];
+  projectId: string;
+}) => {
+  await db.project.update({
+    where: {
+      id: projectId,
+    },
+    data: {
+      imagehighlights: { push: newImages },
+    },
+  });
+};
