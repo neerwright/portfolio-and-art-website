@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 type FormInputProps = {
   name: string;
-  type: string;
+  type: "text" | "file";
   label: string;
   accept?: string;
   arrayName: string;
@@ -35,13 +35,16 @@ function FormArrayInput({
 
   useEffect(() => {
     if (defaultData) {
-      const defaultValues: InputList[] = [];
-      defaultData.map((dataString, index) => {
-        const parsedData = JSON.parse(dataString) as InputList;
-        defaultValues.push({ ...parsedData, inputIndex: index });
+      if (type == "text") {
+        const defaultValues: InputList[] = [];
+        defaultData.map((dataString, index) => {
+          const parsedData = JSON.parse(dataString) as InputList;
+          defaultValues.push({ ...parsedData, inputIndex: index });
 
-        setInputFieldsList(defaultValues);
-      });
+          setInputFieldsList(defaultValues);
+        });
+      } else {
+      }
     }
   }, []);
 

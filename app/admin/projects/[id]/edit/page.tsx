@@ -7,6 +7,7 @@ import { SubmitButton } from "@/components/form/Buttons";
 import CheckboxInput from "@/components/form/CheckBoxInput";
 import ImageInputContainer from "@/components/form/ImageInputContainer";
 import FormArrayInput from "@/components/form/FormArrayInput";
+import ImageArrayUpdateContainer from "@/components/form/ImageArrayUpdateContainer";
 
 async function EditProjectPage({
   params,
@@ -28,7 +29,7 @@ async function EditProjectPage({
   } = project;
   return (
     <section>
-      <h1 className="text-2xl font-semibold mb-8 capitalize p-8">
+      <h1 className="text-3xl font-semibold mb-8 capitalize p-8">
         update project
       </h1>
       <div className="border p-8 rounded-md">
@@ -81,8 +82,27 @@ async function EditProjectPage({
             label="Highlights"
             arrayName="texthighlights"
           />
+
+          <FormArrayInput
+            defaultData={imagehighlights}
+            name="imagehighlights"
+            label="Highlights"
+            arrayName="imagehighlights"
+            type="file"
+            accept="image/*"
+          />
+
           <SubmitButton text="update project" className="mt-8" />
         </FormContainer>
+
+        <section className="py-8">
+          <p className="text-3xl py-2">Update Images</p>
+          <ImageArrayUpdateContainer
+            images={imagehighlights}
+            name="imagehighlights"
+            id={id}
+          />
+        </section>
       </div>
     </section>
   );

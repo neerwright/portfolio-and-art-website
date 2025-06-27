@@ -800,3 +800,41 @@ export const deleteProjectAction = async (prevState: { projectId: string }) => {
     return renderError(error);
   }
 };
+
+export const replaceProjectImageAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await getAuthUser();
+  try {
+    const image = formData.get("image") as File;
+    const projectId = formData.get("id") as string;
+    const oldImageUrl = formData.get("oldImage") as string;
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedFile.image);
+    await deleteImage(oldImageUrl);
+
+    const project = await fetchAdminProjectDetails(projectId);
+
+    const newImages = project.imagehighlights;
+    var index = newImages.indexOf(oldImageUrl);
+
+    if (index !== -1) {
+      newImages[index] = fullPath;
+    }
+
+    await db.project.update({
+      where: {
+        id: projectId,
+      },
+      data: {
+        imagehighlights: newImages,
+      },
+    });
+    revalidatePath(`/admin/projects/${projectId}/edit`);
+    return { message: "Product Image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
