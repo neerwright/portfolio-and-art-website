@@ -34,7 +34,7 @@ export const projectSchema = z.object({
     .max(100, {
       message: "name must be less than 100 characters.",
     }),
-  tech: z.array(z.string()),
+  tech: z.string(),
   rank: z.coerce.number().int().min(0, {
     message: "rank must be a positive number.",
   }),

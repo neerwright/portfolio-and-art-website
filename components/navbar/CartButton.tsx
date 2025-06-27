@@ -12,7 +12,7 @@ async function CartButton() {
         <div className=" bg-stone-950 relative ">
           <ShopBagIcon color={"rgb(108,188,228)"}></ShopBagIcon>
 
-          <span className="absolute top-1 right-0.5 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
+          <span className="absolute top-1 right-1 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
             {numItemsInCart}
           </span>
         </div>

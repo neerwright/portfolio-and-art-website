@@ -93,7 +93,7 @@ model Project {
   title        String
   profileImage String
   rank         Int  @default(0)
-  tech         String[]
+  tech         String
   texthighlights   String[]
   imagehighlights String[]
   video        String

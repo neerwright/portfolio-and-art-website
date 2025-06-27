@@ -1,4 +1,5 @@
 import ProductsContainer from "@/components/products/ProductsContainer";
+import ProjectSearch from "@/components/projects/ProjectsSearchBar";
 
 async function ProductsPage({
   searchParams,
@@ -9,9 +10,9 @@ async function ProductsPage({
   const l = layout || "grid";
   const s = search || "";
   return (
-    <>
+    <div className="p-8">
       <ProductsContainer layout={l} search={s} />
-    </>
+    </div>
   );
 }
 export default ProductsPage;

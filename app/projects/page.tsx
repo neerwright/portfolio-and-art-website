@@ -1,30 +1,24 @@
-import FormArrayInput from "@/components/form/FormArrayInput";
-import FormContainer from "@/components/form/FormContainer";
-import HeroCarousel from "@/components/home/HeroCarousel";
-import { Button } from "@/components/ui/button";
-import { doNothing } from "@/utils/actions";
-import Link from "next/link";
+import TSIcon from "@/components/icons/TSicon";
+import ProjectsContainer from "@/components/projects/ProjectsContainer";
 
-function ProjectsPage() {
+async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ layout?: string; search?: string }>;
+}) {
+  const { search, layout } = await searchParams;
+  const l = layout || "grid";
+  const s = search || "";
   return (
-    <div className="p-8 flex justify-center">
-      <h1 className="max-w-xl font-bold text-2xl  sm:text-5xl">Projects</h1>
-      <FormContainer action={doNothing}>
-        <FormArrayInput
-          label="input"
-          name="hello"
-          type="text"
-          arrayName="titleData"
-        ></FormArrayInput>
-        <FormArrayInput
-          label="input"
-          name="hello"
-          type="file"
-          accept="image/*"
-          arrayName="imgData"
-        ></FormArrayInput>
-      </FormContainer>
-    </div>
+    <>
+      <div className="p-8 flex justify-center ">
+        <p className="text-3xl py-3">Projects</p>
+      </div>
+      <div className="py-2">
+        <ProjectsContainer layout={l} search={s} />
+      </div>
+    </>
   );
 }
+
 export default ProjectsPage;

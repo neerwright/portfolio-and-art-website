@@ -626,16 +626,17 @@ export const fetchAdminOrders = async () => {
   return orders;
 };
 
-export const fetchAllProject = async ({ search = "" }: { search: string }) => {
-  return db.product.findMany({
+export const fetchAllProjects = async ({ search = "" }: { search: string }) => {
+  return db.project.findMany({
     where: {
       OR: [
-        { name: { contains: search, mode: "insensitive" } },
-        { company: { contains: search, mode: "insensitive" } },
+        { title: { contains: search, mode: "insensitive" } },
+        { tech: { contains: search, mode: "insensitive" } },
+        { description: { contains: search, mode: "insensitive" } },
       ],
     },
     orderBy: {
-      createdAt: "desc",
+      rank: "asc",
     },
   });
 };
@@ -693,7 +694,6 @@ export const createProjectAction = async (
       return validatedFile.image;
     });
 
-    rawData["tech"] = [rawData["tech"]];
     rawData["rank"] = Number();
 
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
@@ -772,7 +772,6 @@ export const updateProjectAction = async (
       return JSON.stringify({ title: item.title, data: item.data });
     });
 
-    rawData["tech"] = [rawData["tech"]];
     rawData["rank"] = Number(rawData.rank);
 
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
