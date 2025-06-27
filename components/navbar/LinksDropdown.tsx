@@ -24,7 +24,7 @@ async function LinksDropdown() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="flex gap-4 max-w-[100px] bg-blue-400 hover:bg-blue-500 border-black"
+          className="flex gap-4 max-w-[100px] bg-blue-300 hover:bg-blue-400 border-black"
         >
           <LuAlignLeft className="w-6 h-6" />
           <UserIcon />

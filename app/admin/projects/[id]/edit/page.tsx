@@ -18,6 +18,7 @@ async function EditProjectPage({
   const {
     title,
     tech,
+    rank,
     texthighlights,
     imagehighlights,
     video,
@@ -32,17 +33,18 @@ async function EditProjectPage({
       </h1>
       <div className="border p-8 rounded-md">
         <FormContainer action={updateProjectAction}>
-          <FormInput
-            type="tech"
-            name="title"
-            label="title"
-            defaultValue={tech.toString()}
-          />
+          <input type="hidden" name="id" value={id} />
           <FormInput
             type="text"
             name="title"
             label="title"
             defaultValue={title}
+          />
+          <FormInput
+            type="tech"
+            name="tech"
+            label="tech"
+            defaultValue={tech.toString()}
           />
           <FormInput
             type="text"
@@ -55,6 +57,12 @@ async function EditProjectPage({
             name="github"
             label="github"
             defaultValue={github}
+          />
+          <FormInput
+            type="number"
+            name="rank"
+            label="rank"
+            defaultValue={rank}
           />
           <TextAreaInput
             name="description"

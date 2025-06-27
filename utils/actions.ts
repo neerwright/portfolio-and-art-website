@@ -675,49 +675,33 @@ export const createProjectAction = async (
     });
 
     rawData["imagehighlights"] = JSON.parse(rawData["imagehighlights"]);
-    console.log(rawData);
 
     const images = rawData["imagehighlights"].map((item: any) => {
-      console.log("title");
-      console.log(item.title);
       const file = formData.get(item.title) as File;
-      console.log("file");
-      console.log(file);
+
       return file;
     });
 
     const validatedImages: File[] = images.map((item: any) => {
-      console.log("images");
-      console.log(images);
       const validatedFile = validateWithZodSchema(imageSchema, {
         image: item,
       });
 
       return validatedFile.image;
     });
-    console.log("images");
-    console.log(validatedImages);
+
     rawData["tech"] = [rawData["tech"]];
     rawData["rank"] = Number();
 
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
-    console.log("validatedFields");
-    console.log(validatedFields);
 
     const fullPaths = await uploadImages(validatedImages);
     Promise.all([...fullPaths]).then((values) => {
-      console.log("values");
-      console.log(values);
       db_create_project({
         validatedFields: validatedFields,
         fullPaths: values,
       });
     });
-    console.log("fullPaths");
-    console.log(fullPaths);
-    /*
-    
-    */
   } catch (error) {
     return renderError(error);
   }
@@ -765,15 +749,21 @@ export const updateProjectAction = async (
   formData: FormData
 ) => {
   await getAdminUser();
-  const projectHighlights = formData.get("texthighlights") as string;
-  console.log(projectHighlights);
-  return { message: "test" };
-  /*
+
   try {
     const projectId = formData.get("id") as string;
-    const rawData = Object.fromEntries(formData);
+    const rawData = Object.fromEntries(formData) as UnparsedProjectData;
+
+    rawData["texthighlights"] = JSON.parse(rawData["texthighlights"]);
+    rawData["texthighlights"] = rawData["texthighlights"].map((item: any) => {
+      return JSON.stringify({ title: item.title, data: item.data });
+    });
+
+    rawData["tech"] = [rawData["tech"]];
+    rawData["rank"] = Number(rawData.rank);
 
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
+    console.log(validatedFields);
 
     await db.project.update({
       where: {
@@ -788,7 +778,6 @@ export const updateProjectAction = async (
   } catch (error) {
     return renderError(error);
   }
-    */
 };
 
 export const deleteProjectAction = async (prevState: { projectId: string }) => {
