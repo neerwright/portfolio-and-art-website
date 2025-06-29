@@ -40,21 +40,20 @@ const SpeachBubble = ({
         if (BoundingBoxRef.current && rect) {
           if (BoundingBoxRef.current.style) {
             const aspect = rect.height / rect.width;
-            const heightMult: number = rect.height > 486.3 ? 1.7 : 1.2;
-            console.log(heightMult);
-            console.log(rect.height);
+
+            const leftMult = mirror ? 0.24 : 0.14;
             BoundingBoxRef.current.style.height = `${
-              rect.height * aspect * heightMult
+              rect.height * aspect * 1.15
             }px`;
             BoundingBoxRef.current.style.width = `${
-              rect.width * aspect * 1.2
+              rect.width * aspect * 1.23
             }px`;
 
             BoundingBoxRef.current.style.top = `${
-              rect.height * aspect * 0.1
+              rect.height * aspect * 0.07
             }px`;
             BoundingBoxRef.current.style.left = `${
-              rect.width * aspect * 0.15
+              rect.width * aspect * leftMult
             }px`;
           }
         }
@@ -65,18 +64,15 @@ const SpeachBubble = ({
   return (
     <div>
       <Parallax speed={speed}>
-        <div
-          ref={BoundingBoxRef}
-          className="absolute overflow-hidden   border-4 border-blue-800"
-        >
+        <div ref={BoundingBoxRef} className="absolute overflow-hidden ">
           {children}
         </div>
-        <div ref={BubbleImgRef} className="border-4 border-b-fuchsia-600 ">
+        <div ref={BubbleImgRef} className=" ">
           <Image
             src={bubble}
             alt="speach"
-            width={770}
-            height={770}
+            width={1000}
+            height={1000}
             onLoad={() => parallaxController?.update()}
           />
         </div>

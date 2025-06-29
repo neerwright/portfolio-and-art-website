@@ -5,23 +5,28 @@ import { useParallaxController } from "react-scroll-parallax";
 
 function SpeachBubbleContent({
   img,
-  speed,
+  start,
+  end,
   position,
   alt,
   height,
   width,
+  inFront,
 }: {
   img: StaticImageData;
-  speed: number;
+  start: number;
+  end: number;
   position: string;
   alt?: string;
   height: number;
   width: number;
+  inFront: boolean;
 }) {
   const parallaxController = useParallaxController();
+  const cssPosition = inFront ? "fixed" : "absolute";
   return (
-    <div className={`absolute ${position}`}>
-      <Parallax speed={speed}>
+    <div className={`${cssPosition}  ${position}`}>
+      <Parallax translateY={[start, -end]}>
         <Image
           src={img}
           alt={alt ? alt : ""}
