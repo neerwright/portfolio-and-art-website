@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function NavbarScrollContainer({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(true);
-  const SCROLL_DIST = 200;
+  const SCROLL_DIST = 100;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
