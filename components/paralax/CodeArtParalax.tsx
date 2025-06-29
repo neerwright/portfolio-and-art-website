@@ -11,6 +11,12 @@ import bulb from "@/public/images/bulb.png";
 import coffee from "@/public/images/coffeeFlipped.png";
 import docker from "@/public/images/docker.png";
 import plane from "@/public/images/plane.png";
+import notes from "@/public/images/notes.png";
+import canvas from "@/public/images/canvas.png";
+import pen from "@/public/images/pencil.png";
+import brush from "@/public/images/brush.png";
+import plant from "@/public/images/plant1.png";
+import plant2 from "@/public/images/plant2.png";
 
 import SpeachBubbleContent from "./SpeachBubbleContent";
 
@@ -46,11 +52,11 @@ function CodeArtParalax() {
               <SpeachBubbleContent
                 img={plane}
                 alt="reactbubble"
-                start={150}
-                end={150}
-                position="left-7/10 top-80 z-1"
-                height={200}
-                width={200}
+                start={70}
+                end={70}
+                position="left-8/10 top-80 z-1"
+                height={150}
+                width={150}
                 inFront={false}
               ></SpeachBubbleContent>
 
@@ -68,9 +74,9 @@ function CodeArtParalax() {
               <SpeachBubbleContent
                 img={awsBubble}
                 alt="aws"
-                start={100}
-                end={100}
-                position="right-2/10 top-35 z-1"
+                start={120}
+                end={120}
+                position="right-2/10 top-40 z-1"
                 height={200}
                 width={200}
                 inFront={false}
@@ -90,20 +96,20 @@ function CodeArtParalax() {
               <SpeachBubbleContent
                 img={bulb}
                 alt="dotdotdot"
-                start={500}
+                start={700}
                 end={400}
                 position="left-25/50 top-75 z-51"
-                height={100}
-                width={100}
+                height={70}
+                width={70}
                 inFront={false}
               ></SpeachBubbleContent>
 
               <SpeachBubbleContent
                 img={coffee}
                 alt="dotdotdot"
-                start={400}
+                start={300}
                 end={300}
-                position="left-1/100 top-80 z-1"
+                position="left-1/100 top-90 z-1"
                 height={130}
                 width={130}
                 inFront={false}
@@ -118,9 +124,71 @@ function CodeArtParalax() {
                 alt="artPP"
                 start={100}
                 end={120}
-                position="left-20 -bottom-6/10"
+                position="left-20 -bottom-6/10 z-52"
                 height={600}
                 width={600}
+                inFront={false}
+              ></SpeachBubbleContent>
+
+              <SpeachBubbleContent
+                img={canvas}
+                alt="reactbubble"
+                start={300}
+                end={200}
+                position="left-7/10 top-10 z-1"
+                height={200}
+                width={200}
+                inFront={false}
+              ></SpeachBubbleContent>
+              <SpeachBubbleContent
+                img={pen}
+                alt="reactbubble"
+                start={100}
+                end={20}
+                position="left-4/10 top-2/10 z-1"
+                height={50}
+                width={50}
+                inFront={false}
+              ></SpeachBubbleContent>
+
+              <SpeachBubbleContent
+                img={brush}
+                alt="reactbubble"
+                start={100}
+                end={200}
+                position="left-7/10 top-1/10 z-1"
+                height={120}
+                width={120}
+                inFront={false}
+              ></SpeachBubbleContent>
+              <SpeachBubbleContent
+                img={plant2}
+                alt="reactbubble"
+                start={10}
+                end={40}
+                position="left-1/10 top-3/10 z-1"
+                height={100}
+                width={100}
+                inFront={false}
+              ></SpeachBubbleContent>
+              <SpeachBubbleContent
+                img={plant}
+                alt="reactbubble"
+                start={100}
+                end={100}
+                position="left-2/50 top-70 z-1"
+                height={150}
+                width={150}
+                inFront={false}
+              ></SpeachBubbleContent>
+              <SpeachBubbleContent
+                img={notes}
+                alt="reactbubble"
+                start={80}
+                end={60}
+                position="left-28/50 top-90 z-1"
+                height={150}
+                width={150}
                 inFront={false}
               ></SpeachBubbleContent>
             </SpeachBubble>
