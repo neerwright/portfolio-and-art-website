@@ -107,8 +107,8 @@ function CodeArtParalax() {
               <SpeachBubbleContent
                 img={coffee}
                 alt="dotdotdot"
-                start={300}
-                end={300}
+                start={100}
+                end={100}
                 position="left-1/100 top-90 z-1"
                 height={130}
                 width={130}
@@ -133,9 +133,9 @@ function CodeArtParalax() {
               <SpeachBubbleContent
                 img={canvas}
                 alt="reactbubble"
-                start={300}
+                start={200}
                 end={200}
-                position="left-7/10 top-10 z-1"
+                position="left-7/10 top-30 z-1"
                 height={200}
                 width={200}
                 inFront={false}

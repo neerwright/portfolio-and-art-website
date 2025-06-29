@@ -16,10 +16,16 @@ const SpeachBubble = ({
 }) => {
   const parallaxController = useParallaxController();
   let bubble = MainSpeachBubble;
+  let text: string = "";
+  let position: string = "";
   if (mirror) {
     bubble = FlippedBubble;
+    text = "<art>";
+    position = "right-20 -botom-30";
   } else {
     bubble = MainSpeachBubble;
+    text = "<code>";
+    position = "left-10";
   }
 
   const BubbleImgRef = useRef<HTMLDivElement>(null);
@@ -75,6 +81,9 @@ const SpeachBubble = ({
             height={1000}
             onLoad={() => parallaxController?.update()}
           />
+        </div>
+        <div className={`absolute ${position} text-6xl text-sky-900`}>
+          {`${text}`}
         </div>
       </Parallax>
     </div>
