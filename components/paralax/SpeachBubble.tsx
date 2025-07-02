@@ -73,7 +73,7 @@ const SpeachBubble = ({
         <div ref={BoundingBoxRef} className="absolute overflow-hidden z-50">
           {children}
         </div>
-        <div ref={BubbleImgRef} className=" ">
+        <div ref={BubbleImgRef}>
           <Image
             src={bubble}
             alt="speach"

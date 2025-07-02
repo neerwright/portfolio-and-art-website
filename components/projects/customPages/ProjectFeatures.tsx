@@ -5,13 +5,19 @@ function ProjectFeatures({
   texthighlights,
   imagehighlights,
   title,
+  width,
+  height,
 }: {
   texthighlights: string[];
   imagehighlights: string[];
   title: string;
+  width?: number;
+  height?: number;
 }) {
+  const w = width ? width : 200;
+  const h = height ? height : 200;
   return (
-    <section className="py-6 mt-5 flex flex-col justify-center items-center">
+    <section className="py-6 sm:mt-5 flex flex-col justify-center items-center ">
       <Separator className="bg-sky-300" />
       <p className="mt-5 text-4xl">Key Features</p>
       <div className="mt-5">
@@ -23,12 +29,12 @@ function ProjectFeatures({
           }
           if (img != null) {
             return (
-              <div key={index} className="flex flex-row">
+              <div key={index} className="flex sm:flex-row flex-col mt-5">
                 <Image
                   src={img}
-                  width={500}
-                  height={500}
-                  className="rounded-md object-cover mb-4 w-[200px] h-[200px]"
+                  width={w}
+                  height={h}
+                  className={`rounded-md object-cover mb-4 w-[${w}px] h-[${h}px]`}
                   alt={title}
                 ></Image>
                 <div className="flex flex-col ml-4">

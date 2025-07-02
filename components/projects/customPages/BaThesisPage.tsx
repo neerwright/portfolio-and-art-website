@@ -3,13 +3,8 @@ import ProjectHeader from "./ProjectHeader";
 import ProjectFeatures from "./ProjectFeatures";
 import ProjectGoals from "./ProjectGoals";
 import ProjectFooter from "./ProjectFooter";
-import { Separator } from "@/components/ui/separator";
-import { FaGoogleDrive } from "react-icons/fa";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { FaGamepad } from "react-icons/fa";
 
-function ScootProjectPage({
+function BaThesisPage({
   title,
   tech,
   texthighlights,
@@ -29,22 +24,12 @@ function ScootProjectPage({
         github={github}
       ></ProjectHeader>
 
-      <div className="flex flex-col   justify-center items-center mt-5">
-        <Button asChild>
-          <Link
-            href={"https://neerrene.itch.io/scoot-scoot-fly"}
-            className="w-fit"
-          >
-            <FaGamepad />
-            play the game here!
-          </Link>
-        </Button>
-      </div>
-
       <ProjectFeatures
         texthighlights={texthighlights}
         imagehighlights={imagehighlights}
         title={title}
+        width={300}
+        height={300}
       ></ProjectFeatures>
 
       <ProjectGoals goals={goals}></ProjectGoals>
@@ -53,4 +38,4 @@ function ScootProjectPage({
     </div>
   );
 }
-export default ScootProjectPage;
+export default BaThesisPage;

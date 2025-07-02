@@ -687,7 +687,7 @@ export const createProjectAction = async (
       return validatedFile.image;
     });
 
-    rawData["rank"] = Number();
+    rawData["rank"] = Number(rawData["rank"]);
 
     const validatedFields = validateWithZodSchema(projectSchema, rawData);
 

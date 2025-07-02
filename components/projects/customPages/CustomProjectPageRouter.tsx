@@ -1,3 +1,4 @@
+import BaThesisPage from "./BaThesisPage";
 import OlafProjectPage from "./OlafProjectPage";
 import ScootProjectPage from "./ScootProjectPage";
 import { ProjectProps } from "@/utils/types";
@@ -39,6 +40,20 @@ export default function CustomProjectPageRouter({
           goals={goals}
           github={github}
         ></ScootProjectPage>
+      );
+
+    case "Monitor for Internet Lab @Uni Tübingen - Bachelor Thesis":
+      return (
+        <BaThesisPage
+          title={title}
+          tech={tech}
+          texthighlights={texthighlights}
+          imagehighlights={imagehighlights}
+          video={video}
+          description={description}
+          goals={goals}
+          github={github}
+        ></BaThesisPage>
       );
 
     default:

@@ -16,9 +16,13 @@ function ProjectHeader({
 }) {
   return (
     <section className="">
-      <div className="flex flex-col justify-center items-center">
-        <p className="text-6xl mb-5">{title}</p>
-        <TextToIcons techs={tech} />
+      <div className="flex flex-col justify-center items-center ">
+        <p className="sm:text-6xl sm:mt-5 mb-5 text-center  text-3xl  sm:px-3 px-15 font-bold max-w-screen">
+          {title}
+        </p>
+        <div className="flex max-w-100 sm:max-w-screen">
+          <TextToIcons techs={tech} />
+        </div>
         <iframe
           className="mt-5 "
           width="560"

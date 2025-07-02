@@ -24,15 +24,18 @@ function SpeachBubbleContent({
 }) {
   const parallaxController = useParallaxController();
   const cssPosition = inFront ? "fixed" : "absolute";
+
   return (
-    <div className={`${cssPosition}  ${position}`}>
+    <div className={`${cssPosition}  ${position} `}>
       <Parallax translateY={[start, -end]}>
         <Image
+          will-change="transform"
           src={img}
           alt={alt ? alt : ""}
           width={width}
           height={height}
           onLoad={() => parallaxController?.update()}
+          onChange={() => {}}
         />
       </Parallax>
     </div>

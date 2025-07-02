@@ -9,6 +9,7 @@ function ProductsList({ projects }: { projects: Project[] }) {
     <div className="mt-12 grid gap-y-8">
       {projects.map((project) => {
         const { title, tech, profileImage, description } = project;
+        const techArray: string[] = tech.split(",");
 
         const projectId = project.id;
         return (
@@ -23,7 +24,7 @@ function ProductsList({ projects }: { projects: Project[] }) {
                       fill
                       sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
                       priority
-                      className="w-full rounded-md object-cover"
+                      className="w-full rounded-md object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
 
@@ -33,9 +34,18 @@ function ProductsList({ projects }: { projects: Project[] }) {
                     </h2>
                     <h4 className="text-muted-foreground">{description}</h4>
                   </div>
-                  <p className="text-muted-foreground text-lg md:ml-auto">
-                    {tech}
-                  </p>
+                  <div className="flex flex-wrap p-8">
+                    {techArray.map((t, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="text-muted-foreground text-lg md:ml-auto flex"
+                        >
+                          {t}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </CardContent>
               </Card>
             </Link>

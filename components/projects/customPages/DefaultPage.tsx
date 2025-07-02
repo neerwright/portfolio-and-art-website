@@ -1,10 +1,4 @@
 import { ProjectProps } from "@/utils/types";
-
-import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
-import TextToIcons from "../TextToIcons";
 import ProjectHeader from "./ProjectHeader";
 import ProjectFeatures from "./ProjectFeatures";
 import ProjectGoals from "./ProjectGoals";

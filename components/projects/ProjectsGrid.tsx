@@ -21,7 +21,7 @@ function ProjectsGrid({ projects }: { projects: Project[] }) {
                   <p className="text-3xl capitalize flex justify-center ">
                     {title}
                   </p>
-                  <div className="relative h-64 md:max-w-64 md:h-48 rounded overflow-hidden mx-auto">
+                  <div className="relative h-64 md:max-w-64 md:h-48 rounded overflow-hidden">
                     <Image
                       src={profileImage}
                       alt={title}
