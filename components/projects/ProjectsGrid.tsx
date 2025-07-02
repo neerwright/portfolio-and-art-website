@@ -16,19 +16,19 @@ function ProjectsGrid({ projects }: { projects: Project[] }) {
         return (
           <article key={projectId} className="group relative">
             <Link href={`/projects/${projectId}`}>
-              <Card className="transform group-hover:shadow-xl transition-shadow duration-500 bg-sky-50">
+              <Card className="transform group-hover:shadow-xl transition-shadow duration-500 bg-sky-50 lg:max-w-128">
                 <CardContent className="">
-                  <p className="text-3xl capitalize flex justify-center">
+                  <p className="text-3xl capitalize flex justify-center ">
                     {title}
                   </p>
-                  <div className="relative h-64 md:h-48 rounded overflow-hidden ">
+                  <div className="relative h-64 md:max-w-64 md:h-48 rounded overflow-hidden mx-auto">
                     <Image
                       src={profileImage}
                       alt={title}
                       fill
-                      sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+                      sizes="(max-width:700px) 100vw,(max-width:700px) 50vw,50vw"
                       priority
-                      className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                      className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500  "
                     />
                   </div>
 

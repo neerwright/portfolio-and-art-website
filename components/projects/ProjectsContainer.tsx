@@ -59,7 +59,7 @@ async function ProductsContainer({
       </div>
       <Separator className="mt-4 bg-sky-200" />
       <h4 className="font-medium text-lg">
-        {totalProjects} project {totalProjects > 1 && "s"}
+        {totalProjects} project{totalProjects > 1 && "s"}
       </h4>
     </>
   );

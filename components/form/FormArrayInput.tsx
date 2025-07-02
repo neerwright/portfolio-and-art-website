@@ -13,6 +13,21 @@ type FormInputProps = {
   defaultData?: string[];
 };
 
+function getDefaultData(data: string[]) {
+  const defaultValues: InputList[] = [];
+  console.log("data");
+  console.log(data);
+  data.map((dataString, index) => {
+    const parsedData = JSON.parse(dataString) as InputList;
+    defaultValues.push({ ...parsedData, inputIndex: index });
+  });
+  //setInputFieldsList(defaultValues);
+  //setFieldNumber(defaultValues.length);
+  console.log("defaultValues");
+  console.log(defaultValues);
+  return defaultValues;
+}
+
 type InputList = {
   inputIndex?: number;
   title: string;
@@ -27,25 +42,28 @@ function FormArrayInput({
   arrayName,
   defaultData,
 }: FormInputProps) {
-  const [inputFieldsList, setInputFieldsList] = useState<InputList[]>([
-    { inputIndex: 0, title: "", data: "" },
-  ]);
+  const [inputFieldsList, setInputFieldsList] = useState<InputList[]>(() => {
+    return [{ inputIndex: 0, title: "", data: "" }];
+  });
 
   const [fieldNumber, setFieldNumber] = useState<number>(1);
 
-  useEffect(() => {
-    if (defaultData) {
+  const inputDefaultValues = () => {
+    const defaultValues: InputList[] = [];
+    if (defaultData != null) {
       if (type == "text") {
-        const defaultValues: InputList[] = [];
         defaultData.map((dataString, index) => {
           const parsedData = JSON.parse(dataString) as InputList;
           defaultValues.push({ ...parsedData, inputIndex: index });
-
-          setInputFieldsList(defaultValues);
         });
-      } else {
+        setInputFieldsList(defaultValues);
+        setFieldNumber(defaultValues.length);
       }
     }
+  };
+
+  useEffect(() => {
+    inputDefaultValues();
   }, []);
 
   const handleAddInputField = () => {

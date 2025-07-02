@@ -27,14 +27,23 @@ async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
     github,
   });
 
-  console.log(title)
-  return <>{customPage ? customPage : <DefaultPage title={title}
-  tech={tech}
-  texthighlights={texthighlights}
-  imagehighlights={imagehighlights}
-  video={video}
-  description={description}
-  goals={goals}
-  github={github} />}</>;
+  return (
+    <>
+      {customPage ? (
+        customPage
+      ) : (
+        <DefaultPage
+          title={title}
+          tech={tech}
+          texthighlights={texthighlights}
+          imagehighlights={imagehighlights}
+          video={video}
+          description={description}
+          goals={goals}
+          github={github}
+        />
+      )}
+    </>
+  );
 }
 export default ProjectPage;

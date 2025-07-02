@@ -635,9 +635,11 @@ export const fetchAllProjects = async ({ search = "" }: { search: string }) => {
         { description: { contains: search, mode: "insensitive" } },
       ],
     },
-    orderBy: {
-      rank: "asc",
-    },
+    orderBy: [
+      {
+        rank: "desc",
+      },
+    ],
   });
 };
 
