@@ -7,7 +7,7 @@ import ProjectsList from "./ProjectsList";
 import ProjectsGrid from "./ProjectsGrid";
 import ProjectSearch from "./ProjectsSearchBar";
 
-async function ProductsContainer({
+async function ProjectsContainer({
   layout,
   search,
 }: {
@@ -46,7 +46,7 @@ async function ProductsContainer({
         </div>
       </section>
       {/* PRODUCTS */}
-      <div>
+      <div className="flex justify-center items-center">
         {totalProjects === 0 ? (
           <h5 className="text-2xl mt-16">
             Sorry, no products matched your search...
@@ -64,4 +64,4 @@ async function ProductsContainer({
     </>
   );
 }
-export default ProductsContainer;
+export default ProjectsContainer;
