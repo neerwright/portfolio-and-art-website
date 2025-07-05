@@ -1,12 +1,10 @@
-import FeaturedProducts from "@/components/home/FeaturedProducts";
-import Hero from "@/components/home/Hero";
-import LoadingContainer from "@/components/global/LoadingContainer";
-import { Suspense } from "react";
 import CodeArtParalax from "@/components/paralax/CodeArtParalax";
-import MainSpeachBubble from "@/public/images/MainSpeachBubble.png";
+
 import Image from "next/image";
 import HeroCarousel, { imageLink } from "@/components/home/HeroCarousel";
 import { fetchAllProjects } from "@/utils/actions";
+import backgroundImg from "@/public/images/Cali.png";
+import TextParalax from "@/components/paralax/TextParalax";
 
 async function HomePage() {
   const projects = await fetchAllProjects({ search: "" });
@@ -19,7 +17,7 @@ async function HomePage() {
   return (
     <div className=" bg-sky-100  ">
       <div className="flex items-center justify-center">
-        <h1 className="text-9xl font-bold sm:text-6xl p-8 mt-12 leading-10   gap-2 sm:gap-x-6">
+        <h1 className="sm:text-9xl font-bold text-6xl p-8 mt-20 leading-10   gap-2 sm:gap-x-6">
           Welcome
         </h1>
       </div>
@@ -28,27 +26,45 @@ async function HomePage() {
         <CodeArtParalax></CodeArtParalax>
       </div>
 
-      <div className="p-9 flex flex-wrap items-center justify-center bg-gray-550 md:mt-30 mt-3">
-        <h2 className="text-4xl font-bold sm:text-6xl p-8 mt-12 leading-10 ">
+      <div className="p-1 flex flex-wrap items-center justify-center bg-gray-550  md:mt-7 sm:mt-20">
+        <h2 className="tracking-wider text-4xl font-bold sm:text-6xl p-1 leading-20 md:mt-7 sm:mt-20">
           My Coding Projects and Art
         </h2>
         <HeroCarousel items={items}></HeroCarousel>
       </div>
-      <div className="flex flex-wrap items-center justify-center bg-gray-950 w-screen">
-        <p className="flex flex-wrap break-all text-sky-50">
-          {" "}
-          dddddddddddddddddddddddnnnnnnnnnndddddddddddddddddddddddddddddddddddddddnnnnnnnnnnddddddddddddddddddd{" "}
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-          dddddddddddddddddddnnnnnnnnnnddddddddddddddddddd
-        </p>
+      <div className="flex flex-wrap items-center justify-center mt-90 sm:mt-50 md:mt-30 lg:mt-30 xl:mt-0 2xl:mt-0">
+        <div className="relative  w-screen h-screen">
+          <div className="overflow-hidden  ">
+            <Image
+              src={backgroundImg}
+              alt="Cover Image"
+              className="object-cover"
+              fill
+            />
+          </div>
+        </div>
+
+        <div className="mt-590 mb-20 sm:mb-10 sm:mt-400 md:mb-20 md:mt-360 lg:mt-270 lg:mb-30 xl:mt-220 xl:mb-35  2xl:mb-30">
+          <TextParalax
+            title={"After Graduation"}
+            text={`I started out wanting to create video games, which taught me
+                        how to think critically, work creatively, and learn fast. Now, I’m
+                        looking for a more stable and impactful role where I can grow,
+                        adapt quickly, and contribute meaningfully to a team. Feel free to
+                        explore my work — I’m ready to help build something great.`}
+          ></TextParalax>
+        </div>
+
+        <div className="">
+          <TextParalax
+            title={"contact me"}
+            text={`I started out wanting to create video games, which taught me
+                        how to think critically, work creatively, and learn fast. Now, I’m
+                        looking for a more stable and impactful role where I can grow,
+                        adapt quickly, and contribute meaningfully to a team. Feel free to
+                        explore my work — I’m ready to help build something great.`}
+          ></TextParalax>
+        </div>
       </div>
     </div>
   );

@@ -14,12 +14,14 @@ export enum Mode {
 type SelectProductAmountProps = {
   mode: Mode.SingleProduct;
   amount: number;
+  maxAmount: number;
   setAmount: (value: number) => void;
 };
 
 type SelectCartItemAmountProps = {
   mode: Mode.CartItem;
   amount: number;
+  maxAmount: number;
   setAmount: (value: number) => Promise<void>;
   isLoading: boolean;
 };
@@ -27,7 +29,7 @@ type SelectCartItemAmountProps = {
 function SelectProductAmount(
   props: SelectProductAmountProps | SelectCartItemAmountProps
 ) {
-  const { mode, amount, setAmount } = props;
+  const { mode, amount, maxAmount, setAmount } = props;
 
   const cartItem = mode === Mode.CartItem;
 
@@ -43,14 +45,17 @@ function SelectProductAmount(
           <SelectValue placeholder={amount} />
         </SelectTrigger>
         <SelectContent>
-          {Array.from({ length: cartItem ? amount + 10 : 1 }, (_, index) => {
-            const selectValue = (index + 1).toString();
-            return (
-              <SelectItem key={index} value={selectValue}>
-                {selectValue}
-              </SelectItem>
-            );
-          })}
+          {Array.from(
+            { length: cartItem ? amount + 10 : maxAmount },
+            (_, index) => {
+              const selectValue = (index + 1).toString();
+              return (
+                <SelectItem key={index} value={selectValue}>
+                  {selectValue}
+                </SelectItem>
+              );
+            }
+          )}
         </SelectContent>
       </Select>
     </>

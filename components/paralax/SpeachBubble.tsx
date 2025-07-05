@@ -68,25 +68,23 @@ const SpeachBubble = ({
   };
 
   return (
-    <div>
-      <Parallax speed={speed}>
-        <div ref={BoundingBoxRef} className="absolute overflow-hidden z-50">
-          {children}
-        </div>
-        <div ref={BubbleImgRef}>
-          <Image
-            src={bubble}
-            alt="speach"
-            width={1000}
-            height={1000}
-            onLoad={() => parallaxController?.update()}
-          />
-        </div>
-        <div className={`absolute ${position} text-6xl text-sky-900`}>
-          {`${text}`}
-        </div>
-      </Parallax>
-    </div>
+    <Parallax speed={speed} className="relative">
+      <div ref={BoundingBoxRef} className="absolute overflow-hidden z-50">
+        {children}
+      </div>
+      <div ref={BubbleImgRef}>
+        <Image
+          src={bubble}
+          alt="speach"
+          width={1000}
+          height={1000}
+          onLoad={() => parallaxController?.update()}
+        />
+      </div>
+      <div className={`absolute ${position} text-6xl text-sky-900`}>
+        {`${text}`}
+      </div>
+    </Parallax>
   );
 };
 

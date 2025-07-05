@@ -8,7 +8,13 @@ import { addToCartAction } from "@/utils/actions";
 import { useAuth } from "@clerk/nextjs";
 import { ProductSignInButton } from "../form/Buttons";
 
-function AddToCart({ productId }: { productId: string }) {
+function AddToCart({
+  productId,
+  maxAmount,
+}: {
+  productId: string;
+  maxAmount: number;
+}) {
   const [amount, setAmount] = useState(1);
   const { userId } = useAuth();
   return (
@@ -17,6 +23,7 @@ function AddToCart({ productId }: { productId: string }) {
         mode={Mode.SingleProduct}
         amount={amount}
         setAmount={setAmount}
+        maxAmount={maxAmount}
       />
       {userId ? (
         <FormContainer action={addToCartAction}>

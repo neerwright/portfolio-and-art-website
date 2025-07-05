@@ -20,9 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body
-          className={inter.className + " border-4 border-amber-400 bg-sky-100"}
-        >
+        <body className={inter.className + " bg-sky-100"}>
           <Providers>
             <Navbar />
             <Container className="py-20">{children}</Container>

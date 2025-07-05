@@ -16,10 +16,9 @@ function Hero() {
           non nam.
         </p>
         <Button asChild size="lg" className="mt-10">
-          <Link href="/products">Our Products</Link>
+          <Link href="/art">Our Products</Link>
         </Button>
       </div>
-      <HeroCarousel />
     </section>
   );
 }

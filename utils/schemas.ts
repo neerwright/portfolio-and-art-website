@@ -9,15 +9,22 @@ export const productSchema = z.object({
     .max(100, {
       message: "name must be less than 100 characters.",
     }),
-  company: z.string(),
+  measurements: z.string(),
+  material: z.string(),
   featured: z.coerce.boolean(),
   price: z.coerce.number().int().min(0, {
     message: "price must be a positive number.",
   }),
+  amount: z.coerce.number().int().min(0, {
+    message: "amount must be a positive number.",
+  }),
+  shipping: z.coerce.number().int().min(0, {
+    message: "shipping must be a positive number.",
+  }),
   description: z.string().refine(
     (description) => {
       const wordCount = description.split(" ").length;
-      return wordCount >= 10 && wordCount <= 1000;
+      return wordCount >= 0 && wordCount <= 1000;
     },
     {
       message: "description must be between 10 and 1000 words.",
@@ -71,8 +78,8 @@ function validateImageFile() {
   return z
     .instanceof(File)
     .refine((file) => {
-      return !file || file.size <= maxUploadSize;
-    }, `File size must be less than 1 MB`)
+      return !file || file.size <= maxUploadSize * 2;
+    }, `File size must be less than 2 MB`)
     .refine((file) => {
       return (
         !file || acceptedFileTypes.some((type) => file.type.startsWith(type))

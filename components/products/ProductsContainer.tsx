@@ -22,7 +22,7 @@ async function ProductsContainer({
       <section>
         <div className="flex justify-between items-center">
           <h4 className="font-medium text-lg">
-            {totalProducts} product{totalProducts > 1 && "s"}
+            {totalProducts} artwork{totalProducts > 1 && "s"}
           </h4>
           <div className="flex gap-x-4">
             <Button
@@ -30,7 +30,7 @@ async function ProductsContainer({
               size="icon"
               asChild
             >
-              <Link href={`/products?layout=grid${searchTerm}`}>
+              <Link href={`/art?layout=grid${searchTerm}`}>
                 <LuLayoutGrid />
               </Link>
             </Button>
@@ -39,19 +39,19 @@ async function ProductsContainer({
               size="icon"
               asChild
             >
-              <Link href={`/products?layout=list${searchTerm}`}>
+              <Link href={`/art?layout=list${searchTerm}`}>
                 <LuList />
               </Link>
             </Button>
           </div>
         </div>
-        <Separator className="mt-4" />
+        <Separator className="mt-4 bg-sky-400" />
       </section>
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
           <h5 className="text-2xl mt-16">
-            Sorry, no products matched your search...
+            Sorry, no artwork matched your search...
           </h5>
         ) : layout === "grid" ? (
           <ProductsGrid products={products} />

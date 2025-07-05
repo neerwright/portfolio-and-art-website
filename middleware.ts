@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 
 const isPublicRoute = createRouteMatcher([
   "/",
-  "/products(.*)",
+  "/art(.*)",
   "/about",
   "/projects(.*)",
   "/art",

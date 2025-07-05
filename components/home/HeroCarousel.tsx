@@ -27,7 +27,7 @@ function HeroCarousel({ items }: { items: imageLink[] }) {
   );
 
   return (
-    <div className=" block p-8 w-full">
+    <div className=" block p-8 w-full ">
       <Carousel
         className="w-9/10"
         opts={{

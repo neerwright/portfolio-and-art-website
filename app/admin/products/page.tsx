@@ -21,7 +21,7 @@ async function ItemsPage() {
   const items = await fetchAdminProducts();
   if (items.length === 0) return <EmptyList />;
   return (
-    <section>
+    <section className="mt-12">
       <Table>
         <TableCaption className="capitalize">
           total products : {items.length}
@@ -29,25 +29,25 @@ async function ItemsPage() {
         <TableHeader>
           <TableRow>
             <TableHead>Product Name</TableHead>
-            <TableHead>Company</TableHead>
+            <TableHead>Shipping</TableHead>
             <TableHead>Price</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {items.map((item) => {
-            const { id: productId, name, company, price } = item;
+            const { id: productId, name, shipping, price } = item;
             return (
               <TableRow key={productId}>
                 <TableCell>
                   <Link
-                    href={`/products/${productId}`}
+                    href={`/art/${productId}`}
                     className="underline text-muted-foreground tracking-wide capitalize"
                   >
                     {name}
                   </Link>
                 </TableCell>
-                <TableCell>{company}</TableCell>
+                <TableCell>{formatCurrency(shipping)}</TableCell>
                 <TableCell>{formatCurrency(price)}</TableCell>
                 <TableCell className="flex items-center gap-x-2">
                   <Link href={`/admin/products/${productId}/edit`}>

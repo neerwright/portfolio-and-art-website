@@ -1,26 +1,60 @@
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
-const name = "price";
 type FormInputNumberProps = {
   defaultValue?: number;
 };
 
-function PriceInput({ defaultValue }: FormInputNumberProps) {
+export const PriceInput = ({ defaultValue }: FormInputNumberProps) => {
   return (
     <div className="mb-2">
       <Label htmlFor="price" className="capitalize">
-        Price ($)
+        Price (€)
       </Label>
       <Input
-        id={name}
+        id={"price"}
         type="number"
-        name={name}
+        name={"price"}
         min={0}
         defaultValue={defaultValue || 100}
         required
       />
     </div>
   );
-}
-export default PriceInput;
+};
+
+export const ShippingInput = ({ defaultValue }: FormInputNumberProps) => {
+  return (
+    <div className="mb-2">
+      <Label htmlFor="shipping" className="capitalize">
+        Shipping (€)
+      </Label>
+      <Input
+        id={"shipping"}
+        type="number"
+        name={"shipping"}
+        min={0}
+        defaultValue={defaultValue || 3}
+        required
+      />
+    </div>
+  );
+};
+
+export const AmountInput = ({ defaultValue }: FormInputNumberProps) => {
+  return (
+    <div className="mb-2">
+      <Label htmlFor="amount" className="capitalize">
+        amount
+      </Label>
+      <Input
+        id={"amount"}
+        type="number"
+        name={"amount"}
+        min={0}
+        defaultValue={defaultValue || 1}
+        required
+      />
+    </div>
+  );
+};

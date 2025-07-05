@@ -8,12 +8,12 @@ function ProductsList({ products }: { products: Product[] }) {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { name, price, image, company } = product;
+        const { name, price, image, material } = product;
         const dollarsAmount = formatCurrency(price);
         const productId = product.id;
         return (
           <article key={productId} className="group relative">
-            <Link href={`/products/${productId}`}>
+            <Link href={`/art/${productId}`}>
               <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
                 <CardContent className="p-8 gap-y-4 grid md:grid-cols-3">
                   <div className="relative h-64  md:h-48 md:w-48">
@@ -29,7 +29,7 @@ function ProductsList({ products }: { products: Product[] }) {
 
                   <div>
                     <h2 className="text-xl font-semibold capitalize">{name}</h2>
-                    <h4 className="text-muted-foreground">{company}</h4>
+                    <h4 className="text-muted-foreground">{material}</h4>
                   </div>
                   <p className="text-muted-foreground text-lg md:ml-auto">
                     {dollarsAmount}

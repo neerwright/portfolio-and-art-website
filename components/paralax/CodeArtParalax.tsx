@@ -118,7 +118,7 @@ function CodeArtParalax() {
           </div>
 
           <div className="absolute left-2/10 top-55 lg:left-4/10">
-            <SpeachBubble speed={40} mirror={true}>
+            <SpeachBubble speed={30} mirror={true}>
               <SpeachBubbleContent
                 img={artPP}
                 alt="artPP"
