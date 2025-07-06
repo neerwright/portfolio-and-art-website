@@ -61,10 +61,17 @@ function HeroCarousel({
             return (
               <CarouselItem key={index} className="md:basis-1/3 sm:basis-1/2">
                 <Card className=" bg-blue-400/40 rounded-lg">
-                  <CardContent className="p-2">
+                  <CardContent className="">
                     <Link href={`/${link}/${id}`}>
-                      <div className="relative xl:h-90 lg:h-70 md:h-50  sm:h-50 h-30">
-                        <Image src={img} alt="hero" fill />
+                      <div className="relative min-h-full">
+                        <Image
+                          src={img}
+                          alt="hero"
+                          width="0"
+                          height="0"
+                          sizes="100vw"
+                          style={{ width: "100%", height: "auto" }}
+                        />
                       </div>
                     </Link>
                   </CardContent>

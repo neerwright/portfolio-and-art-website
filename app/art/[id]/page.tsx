@@ -31,12 +31,14 @@ async function SingleProductPage({
       <BreadCrumbs name={product.name} />
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16 ">
         {/* IMAGE FIRST COL */}
-        <div className="relative h-80 w-80 md:h-100 md:w-100 lg:w-auto lg-h-auto ">
+        <div className="relative ">
           <Image
             src={image}
             alt={name}
-            fill
-            sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: "70%", height: "auto" }}
             priority
             className="w-full  rounded-md object-cover"
           />
