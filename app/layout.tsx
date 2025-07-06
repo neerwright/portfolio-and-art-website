@@ -23,9 +23,10 @@ export default function RootLayout({
         <body className={inter.className + " bg-sky-100"}>
           <Providers>
             <Navbar />
-            <Container className="py-20">{children}</Container>
+            <Container className="py-20 md:mt-4">{children}</Container>
           </Providers>
         </body>
+        dd
       </html>
     </ClerkProvider>
   );

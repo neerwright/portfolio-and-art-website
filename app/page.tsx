@@ -1,17 +1,27 @@
 import CodeArtParalax from "@/components/paralax/CodeArtParalax";
 
 import Image from "next/image";
-import HeroCarousel, { imageLink } from "@/components/home/HeroCarousel";
-import { fetchAllProjects } from "@/utils/actions";
+import HeroCarousel, {
+  artImageLink,
+  projectImageLink,
+} from "@/components/home/HeroCarousel";
+import { fetchAllProjects, fetchFeaturedProducts } from "@/utils/actions";
 import backgroundImg from "@/public/images/Cali.png";
 import TextParalax from "@/components/paralax/TextParalax";
 
 async function HomePage() {
   const projects = await fetchAllProjects({ search: "" });
-  let items: imageLink[] = [];
+  const featuredArt = await fetchFeaturedProducts();
+
+  let items: (projectImageLink | artImageLink)[] = [];
   projects.map((project) => {
     const { profileImage, id } = project;
-    items.push({ profileImage, id });
+    items.push({ profileImage, id, link: "projects" });
+  });
+
+  featuredArt.map((art) => {
+    const { image, id } = art;
+    items.push({ image, id, link: "art" });
   });
 
   return (

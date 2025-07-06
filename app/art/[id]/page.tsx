@@ -18,18 +18,9 @@ async function SingleProductPage({
 }) {
   const parama = await params;
   const product = await fetchSingleProduct(parama.id);
-  const {
-    name,
-    image,
-    measurements,
-    material,
-    shipping,
-    amount,
-    description,
-    price,
-  } = product;
+  const { name, image, measurements, material, amount, description, price } =
+    product;
   const dollarsAmount = formatCurrency(price);
-  const shippingAmount = formatCurrency(shipping);
 
   const { userId } = await auth();
   const reviewDoesNotExist =
@@ -61,7 +52,7 @@ async function SingleProductPage({
           </div>
           <ProductRating productId={parama.id} />
           <div className="flex flex-row mt-2 gap-1">
-            <p className="text-xl  text-sky-400">{measurements}</p>
+            <p className="text-xl  text-sky-300">{measurements} cm</p>
             <p className="text-xl text-muted-foreground"> {material}</p>
           </div>
           <p className="mt-3 text-md bg-muted inline-block p-2 rounded-md">

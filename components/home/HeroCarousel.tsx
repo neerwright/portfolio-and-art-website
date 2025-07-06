@@ -16,12 +16,23 @@ import Autoplay from "embla-carousel-autoplay";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-export type imageLink = {
+export type projectImageLink = {
   profileImage: string;
   id: string;
+  link: string;
 };
 
-function HeroCarousel({ items }: { items: imageLink[] }) {
+export type artImageLink = {
+  image: string;
+  id: string;
+  link: string;
+};
+
+function HeroCarousel({
+  items,
+}: {
+  items: (projectImageLink | artImageLink)[];
+}) {
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false })
   );
@@ -37,14 +48,23 @@ function HeroCarousel({ items }: { items: imageLink[] }) {
       >
         <CarouselContent className="">
           {items.map((item, index) => {
-            const { profileImage, id } = item;
+            const { link, id } = item;
+            let img = null;
+            if (link == "art") {
+              const i: artImageLink = item as artImageLink;
+              img = i.image;
+            } else {
+              const i: projectImageLink = item as projectImageLink;
+              img = i.profileImage;
+            }
+
             return (
               <CarouselItem key={index} className="md:basis-1/3 sm:basis-1/2">
                 <Card className=" bg-blue-400/40 rounded-lg">
                   <CardContent className="p-2">
-                    <Link href={`/projects/${id}`}>
+                    <Link href={`/${link}/${id}`}>
                       <div className="relative xl:h-90 lg:h-70 md:h-50  sm:h-50 h-30">
-                        <Image src={profileImage} alt="hero" fill />
+                        <Image src={img} alt="hero" fill />
                       </div>
                     </Link>
                   </CardContent>
