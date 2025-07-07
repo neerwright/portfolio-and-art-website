@@ -8,8 +8,6 @@ import HeroCarousel, {
 import { fetchAllProjects, fetchFeaturedProducts } from "@/utils/actions";
 import backgroundImg from "@/public/images/Cali.png";
 import TextParalax from "@/components/paralax/TextParalax";
-import Para from "@/components/paralax/Para";
-import { Code } from "lucide-react";
 
 async function HomePage() {
   const projects = await fetchAllProjects({ search: "" });
