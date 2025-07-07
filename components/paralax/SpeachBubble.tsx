@@ -21,7 +21,7 @@ const SpeachBubble = ({
   if (mirror) {
     bubble = FlippedBubble;
     text = "<art>";
-    position = "right-20 -botom-30";
+    position = "right-1 -botom-30";
   } else {
     bubble = MainSpeachBubble;
     text = "<code>";
