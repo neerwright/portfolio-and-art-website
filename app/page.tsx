@@ -25,21 +25,23 @@ async function HomePage() {
   });
 
   return (
-    <div className=" bg-sky-100  ">
-      <div className="flex items-center justify-center">
-        <h1 className="sm:text-9xl font-bold text-6xl p-8 mt-20 leading-10   gap-2 sm:gap-x-6">
-          Welcome
-        </h1>
-      </div>
-
-      <div className="p-1 static ">
-        <h2 className="tracking-wider text-4xl font-bold sm:text-6xl p-1 leading-20 md:mt-7 sm:mt-20 text-center">
-          My Coding Projects and Art
-        </h2>
-        <HeroCarousel items={items}></HeroCarousel>
-      </div>
-
+    <div className="relative bg-sky-100  ">
       <div className="absolute">
+        <div className="flex items-center justify-center">
+          <h1 className="sm:text-9xl font-bold text-6xl p-8 mt-20 leading-10   gap-2 sm:gap-x-6">
+            Welcome
+          </h1>
+        </div>
+
+        <div className="p-1 static ">
+          <h2 className="tracking-wider text-4xl font-bold sm:text-6xl p-1 leading-20 md:mt-7 sm:mt-20 text-center">
+            My Coding Projects and Art
+          </h2>
+          <HeroCarousel items={items}></HeroCarousel>
+        </div>
+      </div>
+
+      <div className="absolute top-230">
         <div className="relative w-screen h-170 ">
           <CodeArtParalax></CodeArtParalax>
         </div>
