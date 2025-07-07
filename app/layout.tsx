@@ -26,7 +26,6 @@ export default function RootLayout({
             <Container className="py-20 md:mt-4">{children}</Container>
           </Providers>
         </body>
-        dd
       </html>
     </ClerkProvider>
   );

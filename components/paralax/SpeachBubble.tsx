@@ -33,6 +33,11 @@ const SpeachBubble = ({
   useEffect(() => {
     /*heightRef?current?.style.height = `${heightRef.current?.offsetHeight}px`;*/
     onWindowResize();
+
+    setTimeout(() => {
+      onWindowResize();
+    }, 500);
+
     window.addEventListener("resize", onWindowResize);
     return () => {
       window.removeEventListener("resize", onWindowResize);

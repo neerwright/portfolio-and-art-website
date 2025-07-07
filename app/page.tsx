@@ -8,6 +8,8 @@ import HeroCarousel, {
 import { fetchAllProjects, fetchFeaturedProducts } from "@/utils/actions";
 import backgroundImg from "@/public/images/Cali.png";
 import TextParalax from "@/components/paralax/TextParalax";
+import Para from "@/components/paralax/Para";
+import { Code } from "lucide-react";
 
 async function HomePage() {
   const projects = await fetchAllProjects({ search: "" });
@@ -32,7 +34,7 @@ async function HomePage() {
         </h1>
       </div>
 
-      <div className="relative mt-10 w-screen h-screen ">
+      <div className="relative mt-50 w-screen h-screen ">
         <CodeArtParalax></CodeArtParalax>
       </div>
 

@@ -9,6 +9,7 @@ const isPublicRoute = createRouteMatcher([
   "/projects(.*)",
   "/art",
   "/contact",
+  "/cart",
 ]);
 const isAdminRoute = createRouteMatcher(["/admin/(.*)"]);
 
