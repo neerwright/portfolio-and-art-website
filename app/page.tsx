@@ -33,9 +33,6 @@ async function HomePage() {
       </div>
 
       <div className="p-1 flex flex-wrap items-center justify-center bg-gray-550  ">
-        <h2 className="tracking-wider text-4xl font-bold sm:text-6xl p-1 leading-20 md:mt-7 sm:mt-20 text-center">
-          My Coding Projects and Art
-        </h2>
         <HeroCarousel items={items}></HeroCarousel>
       </div>
 
