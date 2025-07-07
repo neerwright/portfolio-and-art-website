@@ -34,12 +34,13 @@ const SpeachBubble = ({
     /*heightRef?current?.style.height = `${heightRef.current?.offsetHeight}px`;*/
     onWindowResize();
 
-    setTimeout(() => {
+    let timer1 = setTimeout(() => {
       onWindowResize();
-    }, 500);
+    }, 200);
 
     window.addEventListener("resize", onWindowResize);
     return () => {
+      clearTimeout(timer1);
       window.removeEventListener("resize", onWindowResize);
     };
   }, []);

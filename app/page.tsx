@@ -32,17 +32,18 @@ async function HomePage() {
         </h1>
       </div>
 
-      <div className="relative mt-50 w-screen h-screen ">
-        <CodeArtParalax></CodeArtParalax>
-      </div>
-
       <div className="p-1 flex flex-wrap items-center justify-center bg-gray-550  md:mt-7 sm:mt-20">
         <h2 className="tracking-wider text-4xl font-bold sm:text-6xl p-1 leading-20 md:mt-7 sm:mt-20">
           My Coding Projects and Art
         </h2>
         <HeroCarousel items={items}></HeroCarousel>
       </div>
-      <div className="flex flex-wrap items-center justify-center mt-90 sm:mt-50 md:mt-30 lg:mt-30 xl:mt-0 2xl:mt-0">
+
+      <div className="relative mt-5 w-screen h-screen ">
+        <CodeArtParalax></CodeArtParalax>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center mt-10 sm:mt-50 md:mt-30 lg:mt-30 xl:mt-0 2xl:mt-0">
         <div className="relative  w-screen h-screen">
           <div className="overflow-hidden  ">
             <Image
@@ -50,11 +51,12 @@ async function HomePage() {
               alt="Cover Image"
               className="object-cover"
               fill
+              unoptimized
             />
           </div>
         </div>
 
-        <div className="mt-590 mb-20 sm:mb-10 sm:mt-400 md:mb-20 md:mt-360 lg:mt-270 lg:mb-30 xl:mt-220 xl:mb-35  2xl:mb-30">
+        <div className="mt-390 mb-50 sm:mb-10 sm:mt-400 md:mb-20 md:mt-360 lg:mt-270 lg:mb-30 xl:mt-220 xl:mb-35  2xl:mb-30">
           <TextParalax
             title={"After Graduation"}
             text={`I started out wanting to create video games, which taught me
