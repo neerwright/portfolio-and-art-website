@@ -39,38 +39,40 @@ async function HomePage() {
         <HeroCarousel items={items}></HeroCarousel>
       </div>
 
-      <div className="relative w-screen h-170 ">
-        <CodeArtParalax></CodeArtParalax>
-      </div>
-
-      <div className="relative mt-20 md:mt-50 w-screen h-screen">
-        <div className="overflow-hidden  ">
-          <Image
-            src={backgroundImg}
-            alt="Cover Image"
-            className="object-cover"
-            fill
-            unoptimized
-          />
+      <div className="absolute">
+        <div className="relative w-screen h-170 ">
+          <CodeArtParalax></CodeArtParalax>
         </div>
-        <TextParalax
-          title={"After Graduation"}
-          text={`I started out wanting to create video games, which taught me
-                        how to think critically, work creatively, and learn fast. Now, I’m
-                        looking for a more stable and impactful role where I can grow,
-                        adapt quickly, and contribute meaningfully to a team. Feel free to
-                        explore my work — I’m ready to help build something great.`}
-        ></TextParalax>
 
-        <div className="absolute top-100">
+        <div className="relative mt-20 md:mt-50 w-screen h-screen">
+          <div className="overflow-hidden  ">
+            <Image
+              src={backgroundImg}
+              alt="Cover Image"
+              className="object-cover"
+              fill
+              unoptimized
+            />
+          </div>
           <TextParalax
-            title={"contact me"}
+            title={"After Graduation"}
             text={`I started out wanting to create video games, which taught me
                         how to think critically, work creatively, and learn fast. Now, I’m
                         looking for a more stable and impactful role where I can grow,
                         adapt quickly, and contribute meaningfully to a team. Feel free to
                         explore my work — I’m ready to help build something great.`}
           ></TextParalax>
+
+          <div className="absolute top-100">
+            <TextParalax
+              title={"contact me"}
+              text={`I started out wanting to create video games, which taught me
+                        how to think critically, work creatively, and learn fast. Now, I’m
+                        looking for a more stable and impactful role where I can grow,
+                        adapt quickly, and contribute meaningfully to a team. Feel free to
+                        explore my work — I’m ready to help build something great.`}
+            ></TextParalax>
+          </div>
         </div>
       </div>
     </div>
