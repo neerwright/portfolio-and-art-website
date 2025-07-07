@@ -39,11 +39,11 @@ async function HomePage() {
         <HeroCarousel items={items}></HeroCarousel>
       </div>
 
-      <div className="relative w-screen h-150 ">
+      <div className="relative w-screen h-140 ">
         <CodeArtParalax></CodeArtParalax>
       </div>
 
-      <div className="relative mt-10 md:mt-50 w-screen h-screen xl:mt-100">
+      <div className="relative mt-45 md:mt-50 w-screen h-screen xl:mt-150">
         <div className="overflow-hidden">
           <Image
             src={backgroundImg}
