@@ -35,6 +35,7 @@ function SpeachBubbleContent({
           width={width}
           height={height}
           onLoad={() => parallaxController?.update()}
+          unoptimized={false}
         />
       </Parallax>
     </div>
