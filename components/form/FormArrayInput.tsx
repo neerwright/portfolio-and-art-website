@@ -3,6 +3,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { FormInputAddButton, FormInputDeleteButton } from "./Buttons";
 import { useState, useEffect } from "react";
+import { handleFormChangeFunction } from "@/utils/types";
 
 type FormInputProps = {
   name: string;
@@ -13,7 +14,7 @@ type FormInputProps = {
   defaultData?: string[];
 };
 
-function getDefaultData(data: string[]) {
+/*function getDefaultData(data: string[]) {
   const defaultValues: InputList[] = [];
   console.log("data");
   console.log(data);
@@ -26,13 +27,12 @@ function getDefaultData(data: string[]) {
   console.log("defaultValues");
   console.log(defaultValues);
   return defaultValues;
-}
+}*/
 
 type InputList = {
   inputIndex?: number;
   title: string;
   data: string;
-  imgFile?: any;
 };
 function FormArrayInput({
   label,
@@ -72,7 +72,6 @@ function FormArrayInput({
       { inputIndex: fieldNumber, title: "", data: "" },
     ]);
     setFieldNumber(fieldNumber + 1);
-    console.log(inputFieldsList);
   };
 
   const handleDelInputField = (id: number) => {
@@ -80,9 +79,10 @@ function FormArrayInput({
     setInputFieldsList(arr);
   };
 
-  const handleInputFieldChange = (e: any, id: number) => {
-    console.log(inputFieldsList);
-
+  const handleInputFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
     const { value } = e.target;
     const list = [...inputFieldsList];
     const element = list.find((el) => el.inputIndex === id);
@@ -95,8 +95,11 @@ function FormArrayInput({
     setInputFieldsList(list);
   };
 
-  const handleTextAreaChange = (e: any, id: number) => {
-    const { name, value } = e.target;
+  const handleTextAreaChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+    id: number
+  ) => {
+    const { value } = e.target;
     const list = [...inputFieldsList];
     const element = list.find((el) => el.inputIndex === id);
     if (element == null) return;
@@ -162,7 +165,7 @@ function TextA({
   defaultValue,
 }: {
   id: number;
-  onChangeHandler: any;
+  onChangeHandler: handleFormChangeFunction;
   defaultValue: string;
 }) {
   return (

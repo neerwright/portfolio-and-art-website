@@ -10,6 +10,7 @@ import { FaPenSquare } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";
+import { handleFormFunction } from "@/utils/types";
 
 type btnSize = "default" | "lg" | "sm";
 
@@ -112,7 +113,7 @@ export const FormInputDeleteButton = ({
   onClickEvent,
   id,
 }: {
-  onClickEvent: any;
+  onClickEvent: handleFormFunction;
   id: number;
 }) => {
   return (

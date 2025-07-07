@@ -3,7 +3,7 @@ import LinksDropdown from "./LinksDropdown";
 import Logo from "./Logo";
 import NavbarScrollContainer from "./NavbarScrollContainer";
 import NavLinks from "./NavLinks";
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import {  SignedIn } from "@clerk/nextjs";
 import SignOutLinks from "./SignOutLinks";
 
 function Navbar() {

@@ -8,12 +8,11 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import hero1 from "@/public/images/hero1.jpg";
-import { fetchAllProjects } from "@/utils/actions";
+
 
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Button } from "../ui/button";
+
 import Link from "next/link";
 
 export type projectImageLink = {

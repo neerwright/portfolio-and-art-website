@@ -13,7 +13,6 @@ import { SubmitButton } from "@/components/form/Buttons";
 import FormArrayInput from "@/components/form/FormArrayInput";
 import ImageArrayUpdateContainer from "@/components/form/ImageArrayUpdateContainer";
 import { Separator } from "@/components/ui/separator";
-import ImageInput from "@/components/form/ImageInput";
 import ImageInputContainer from "@/components/form/ImageInputContainer";
 
 async function EditProjectPage({

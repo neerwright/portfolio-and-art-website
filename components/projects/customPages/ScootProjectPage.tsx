@@ -3,8 +3,6 @@ import ProjectHeader from "./ProjectHeader";
 import ProjectFeatures from "./ProjectFeatures";
 import ProjectGoals from "./ProjectGoals";
 import ProjectFooter from "./ProjectFooter";
-import { Separator } from "@/components/ui/separator";
-import { FaGoogleDrive } from "react-icons/fa";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FaGamepad } from "react-icons/fa";
@@ -15,7 +13,6 @@ function ScootProjectPage({
   texthighlights,
   imagehighlights,
   video,
-  description,
   goals,
   github,
 }: ProjectProps) {

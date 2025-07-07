@@ -5,6 +5,16 @@ export type actionFunction = (
   formData: FormData
 ) => Promise<{ message: string }>;
 
+export type handleFormFunction = (
+  id: number,
+
+) => void;
+
+export type handleFormChangeFunction = (
+  e: React.ChangeEvent<HTMLTextAreaElement>,
+  id: number
+) => void;
+
 export type CartItem = {
   productId: string;
   image: string;

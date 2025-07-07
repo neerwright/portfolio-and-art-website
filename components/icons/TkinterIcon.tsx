@@ -1,5 +1,4 @@
-import tkinter from "@/public/images/Tkinter.jpg";
-import Image from "next/image";
+
 
 function TkinterIcon() {
   return (

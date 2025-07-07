@@ -1,5 +1,5 @@
 import ProductsContainer from "@/components/products/ProductsContainer";
-import ProjectSearch from "@/components/projects/ProjectsSearchBar";
+
 
 async function ArtPage({
   searchParams,

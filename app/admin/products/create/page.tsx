@@ -9,7 +9,6 @@ import {
   ShippingInput,
 } from "@/components/form/PriceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
-import { faker } from "@faker-js/faker";
 import CheckboxInput from "@/components/form/CheckBoxInput";
 
 function CreateProduct() {

@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/utils/format";
+
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Project } from "@prisma/client";

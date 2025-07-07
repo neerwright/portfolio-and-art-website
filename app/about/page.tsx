@@ -19,20 +19,20 @@ function AboutPage() {
             About me
           </h1>
           <p className="sm:text-sky-100 p-5 leading-7 sm:text-2xl text-md  text-white">
-            Hi, I’m René, after graduating at the University of Tübingen with a
-            Computer Science Bachelor and a passion for building software and .
-            I’m currently looking for exciting opportunities where I can
-            contribute as a developer and grow as part of a creative and driven
-            team.
+            Hi, I&apos;m René, after graduating at the University of Tübingen
+            with a Computer Science Bachelor and a passion for building software
+            and . I&apos;m currently looking for exciting opportunities where I
+            can contribute as a developer and grow as part of a creative and
+            driven team.
           </p>
 
           <p className="sm:text-sky-100 p-5 sm:text-lg text-xs text-white">
             While my main focus is programming, I also have a strong creative
-            side, which you’ll see reflected in the artwork featured here. I
-            believe that blending logic with creativity leads to better
+            side, which you&apos;ll see reflected in the artwork featured here.
+            I believe that blending logic with creativity leads to better
             problem-solving and more impactful designs — whether in code or on
-            canvas. Thanks for visiting my portfolio. If you're interested in
-            working together or just want to connect, feel free to reach out!
+            canvas. Thanks for visiting my portfolio. If you&apos;re interested
+            in working together or just want to connect, feel free to reach out!
           </p>
         </div>
       </section>

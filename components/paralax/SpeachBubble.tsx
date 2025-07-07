@@ -3,7 +3,7 @@ import { useParallaxController } from "react-scroll-parallax";
 import MainSpeachBubble from "@/public/images/MainSpeachBubble.png";
 import Image from "next/image";
 import FlippedBubble from "@/public/images/FlippedBubbpe.png";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
 const SpeachBubble = ({
   speed,
@@ -41,7 +41,7 @@ const SpeachBubble = ({
 
   const onWindowResize = () => {
     if (BubbleImgRef) {
-      let rect = BubbleImgRef?.current?.getBoundingClientRect();
+      const rect = BubbleImgRef?.current?.getBoundingClientRect();
       if (BubbleImgRef) {
         if (BoundingBoxRef.current && rect) {
           if (BoundingBoxRef.current.style) {

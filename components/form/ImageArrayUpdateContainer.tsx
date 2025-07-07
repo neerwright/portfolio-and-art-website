@@ -1,11 +1,11 @@
 "use client";
-import { useState } from "react";
+
 import Image from "next/image";
-import { Button } from "../ui/button";
+
 import FormContainer from "./FormContainer";
 import ImageInput from "./ImageInput";
 import { SubmitButton } from "./Buttons";
-import { type actionFunction } from "@/utils/types";
+
 import { replaceProjectImageAction } from "@/utils/actions";
 
 type ImageArrayUpdateContainerProps = {
@@ -21,7 +21,7 @@ function ImageArrayUpdateContainer(props: ImageArrayUpdateContainerProps) {
   return (
     <div className="mb-8">
       {images.map((image, index) => (
-        <div>
+        <div key={index}>
           <Image
             key={index}
             src={image}

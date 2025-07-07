@@ -1,4 +1,3 @@
-import TSIcon from "@/components/icons/TSicon";
 import ProjectsContainer from "@/components/projects/ProjectsContainer";
 
 async function ProjectsPage({

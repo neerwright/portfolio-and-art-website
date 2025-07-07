@@ -1,11 +1,8 @@
-import { useParallax } from "react-scroll-parallax";
+
 import { Parallax } from "react-scroll-parallax";
 import { useParallaxController } from "react-scroll-parallax";
 import ReactSpeachBubble from "@/public/images/ReactSpeachBubble.png";
 import Image from "next/image";
-import FlippedBubble from "@/public/images/FlippedBubbpe.png";
-
-import Bubble from "@/public/images/MainSpeachBubble.png";
 
 const ReactBubble = () => {
   const parallaxController = useParallaxController();

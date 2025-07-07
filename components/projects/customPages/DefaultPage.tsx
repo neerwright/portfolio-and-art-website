@@ -10,7 +10,6 @@ function DefaultPage({
   texthighlights,
   imagehighlights,
   video,
-  description,
   goals,
   github,
 }: ProjectProps) {

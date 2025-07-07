@@ -13,7 +13,7 @@ async function HomePage() {
   const projects = await fetchAllProjects({ search: "" });
   const featuredArt = await fetchFeaturedProducts();
 
-  let items: (projectImageLink | artImageLink)[] = [];
+  const items: (projectImageLink | artImageLink)[] = [];
   projects.map((project) => {
     const { profileImage, id } = project;
     items.push({ profileImage, id, link: "projects" });

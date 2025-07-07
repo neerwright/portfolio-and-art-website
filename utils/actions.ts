@@ -790,16 +790,16 @@ export const deleteProjectAction = async (prevState: { projectId: string }) => {
   await getAdminUser();
 
   try {
-    /*
+    
     const project = await db.project.delete({
       where: {
         id: projectId,
       },
     });
-    */
-    const project = await fetchAdminProjectDetails(projectId);
+    
+    //const project = await fetchAdminProjectDetails(projectId);
     await deleteImages(project.imagehighlights);
-    revalidatePath("/admin/products");
+    revalidatePath("/admin/projects");
     return { message: "product removed" };
   } catch (error) {
     return renderError(error);

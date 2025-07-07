@@ -2,7 +2,7 @@ import EmptyList from "@/components/global/EmptyList";
 import { fetchAdminProjects, deleteProjectAction } from "@/utils/actions";
 import Link from "next/link";
 
-import { formatCurrency } from "@/utils/format";
+
 import {
   Table,
   TableBody,
@@ -15,7 +15,6 @@ import {
 
 import FormContainer from "@/components/form/FormContainer";
 import { IconButton } from "@/components/form/Buttons";
-import { deleteProductAction } from "@/utils/actions";
 
 async function ProjectItemsPage() {
   const items = await fetchAdminProjects();

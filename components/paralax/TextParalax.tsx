@@ -1,9 +1,7 @@
 "use client";
 import { ParallaxProvider } from "react-scroll-parallax";
-import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
-import { StaticImageData } from "next/image";
-import { useParallaxController } from "react-scroll-parallax";
+
 
 function TextParalax({ title, text }: { title: string; text: string }) {
   return (

@@ -10,7 +10,6 @@ function BaThesisPage({
   texthighlights,
   imagehighlights,
   video,
-  description,
   goals,
   github,
 }: ProjectProps) {

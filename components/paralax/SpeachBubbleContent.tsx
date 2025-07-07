@@ -26,7 +26,7 @@ function SpeachBubbleContent({
   const cssPosition = inFront ? "fixed" : "absolute";
 
   return (
-    <div className={`absolute  ${position} `}>
+    <div className={`${cssPosition}  ${position} `}>
       <Parallax translateY={[start, -end]}>
         <Image
           will-change="transform"

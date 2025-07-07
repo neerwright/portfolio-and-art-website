@@ -5,7 +5,7 @@ function ProjectFooter({ techArray }: { techArray: string[] }) {
       <Separator className="bg-sky-300" />
       <div className="flex flex-row gap-3">
         {techArray.map((tech) => {
-          return <p> #{tech} </p>;
+          return <p key={tech.toString()}> #{tech} </p>;
         })}
       </div>
     </section>
