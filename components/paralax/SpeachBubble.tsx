@@ -34,7 +34,7 @@ const SpeachBubble = ({
     /*heightRef?current?.style.height = `${heightRef.current?.offsetHeight}px`;*/
     onWindowResize();
 
-    let timer1 = setTimeout(() => {
+    const timer1 = setTimeout(() => {
       onWindowResize();
     }, 200);
 
