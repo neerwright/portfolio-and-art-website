@@ -9,7 +9,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
-
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -79,8 +78,10 @@ function HeroCarousel({
             );
           })}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div className="hidden sm:flex">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
     </div>
   );

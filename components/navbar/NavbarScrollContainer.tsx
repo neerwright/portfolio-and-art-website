@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function NavbarScrollContainer({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(true);
-  const SCROLL_DIST = 100;
+  const SCROLL_DIST = 200;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -27,7 +27,7 @@ function NavbarScrollContainer({ children }: { children: ReactNode }) {
 
   return (
     <nav
-      className={`transition-transform duration-500 ${
+      className={`transition-transform duration-1000 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } shadow-xl bg-stone-950 fixed top-0 inset-x-0 z-50  text-center`}
     >
