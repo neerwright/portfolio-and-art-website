@@ -76,7 +76,7 @@ const SpeachBubble = ({
   };
 
   return (
-    <Parallax speed={0} className="relative">
+    <Parallax speed={speed} className="relative">
       <div ref={BoundingBoxRef} className="absolute overflow-hidden z-50">
         {children}
       </div>

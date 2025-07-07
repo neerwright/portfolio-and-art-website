@@ -39,7 +39,7 @@ async function HomePage() {
         <HeroCarousel items={items}></HeroCarousel>
       </div>
 
-      <div className="relative w-screen h-190 ">
+      <div className="relative w-screen h-150 ">
         <CodeArtParalax></CodeArtParalax>
       </div>
 
