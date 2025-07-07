@@ -46,6 +46,8 @@ const SpeachBubble = ({
   }, []);
 
   const onWindowResize = () => {
+    const s = speed;
+    console.log(s);
     if (BubbleImgRef) {
       const rect = BubbleImgRef?.current?.getBoundingClientRect();
       if (BubbleImgRef) {
