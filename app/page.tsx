@@ -39,11 +39,11 @@ async function HomePage() {
         <HeroCarousel items={items}></HeroCarousel>
       </div>
 
-      <div className="relative mt-5 w-screen h-screen ">
+      <div className="relative mt-5 w-screen h-screen mb-0 ">
         <CodeArtParalax></CodeArtParalax>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center mt-10 sm:mt-50 md:mt-30 lg:mt-30 xl:mt-0 2xl:mt-0">
+      <div className="flex flex-wrap items-center justify-center mt-0 sm:mt-50 md:mt-30 lg:mt-30 xl:mt-0 2xl:mt-0">
         <div className="relative  w-screen h-screen">
           <div className="overflow-hidden  ">
             <Image
@@ -54,9 +54,6 @@ async function HomePage() {
               unoptimized
             />
           </div>
-        </div>
-
-        <div className="mt-390 mb-50 sm:mb-10 sm:mt-400 md:mb-20 md:mt-360 lg:mt-270 lg:mb-30 xl:mt-220 xl:mb-35  2xl:mb-30">
           <TextParalax
             title={"After Graduation"}
             text={`I started out wanting to create video games, which taught me
@@ -65,17 +62,17 @@ async function HomePage() {
                         adapt quickly, and contribute meaningfully to a team. Feel free to
                         explore my work — I’m ready to help build something great.`}
           ></TextParalax>
-        </div>
 
-        <div className="">
-          <TextParalax
-            title={"contact me"}
-            text={`I started out wanting to create video games, which taught me
+          <div className="absolute top-100">
+            <TextParalax
+              title={"contact me"}
+              text={`I started out wanting to create video games, which taught me
                         how to think critically, work creatively, and learn fast. Now, I’m
                         looking for a more stable and impactful role where I can grow,
                         adapt quickly, and contribute meaningfully to a team. Feel free to
                         explore my work — I’m ready to help build something great.`}
-          ></TextParalax>
+            ></TextParalax>
+          </div>
         </div>
       </div>
     </div>
